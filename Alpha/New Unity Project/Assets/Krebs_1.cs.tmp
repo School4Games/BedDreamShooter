@@ -1,0 +1,26 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class Krebs_1 : MonoBehaviour {
+
+	private bool myBoolean;
+
+	// Use this for initialization
+	void Start () {
+		bool myBool = zahl_2 ();
+		Debug.Log (myBoolean);
+		Debug.Log (myBool);
+		Debug.Log (zahl_2 ());
+	}
+
+	void zahl(){
+		myBoolean = false; 
+	}
+
+	bool zahl_2(){
+		return (5 > 5);
+	// Update is called once per frame
+	void Update () {
+	
+	}
+}
