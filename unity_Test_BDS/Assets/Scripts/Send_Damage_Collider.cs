@@ -1,14 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SendDamageCollider : MonoBehaviour {
+public class Send_Damage_Collider : MonoBehaviour {
 
 	public int damageValue = 1;
 	public string tag = ("Player"); 
-	
+
 	// Use this for initialization
 	void Start () {
-		
+	
 	}
 	
 	void OnTriggerEnter(Collider other)
