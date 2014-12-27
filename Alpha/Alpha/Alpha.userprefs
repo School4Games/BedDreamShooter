@@ -1,10 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\HealthController.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\PlayerController.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\EnemyMovement.cs" Line="12" Column="2" />
-      <File FileName="Assets\Scripts\HealthController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\HealthController_Enemy.cs" Line="41" Column="120" />
+      <File FileName="Assets\Scripts\DestroyPillow.cs" Line="19" Column="3" />
+      <File FileName="Assets\Scripts\DestroyEnemySlimer.cs" Line="16" Column="3" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="19" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
