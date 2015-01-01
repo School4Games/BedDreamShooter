@@ -1,7 +1,7 @@
-﻿using UnityEngine;
-//using System.Collections;
+﻿/*using UnityEngine;
+using System.Collections;
 
-public class tiltFromMovement : MonoBehaviour 
+public class TestingScript : MonoBehaviour 
 {
 	public float maxAngleDegrees = 15.0f;
 	public float rotationSpeed = 30.0f;
@@ -33,10 +33,4 @@ public class tiltFromMovement : MonoBehaviour
 
 		this.transform.rotation = Quaternion.Euler (0, 0, rotation);
 	}
-}
-
-
-
-
-
-
+}*/

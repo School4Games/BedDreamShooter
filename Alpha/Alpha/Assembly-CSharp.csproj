@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Pillow_Controller.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Projectile_Enemy.cs" />
+     <Compile Include="Assets\Scripts\TestingScript.cs" />
      <Compile Include="Assets\Scripts\UIManagerScript.cs" />
      <Compile Include="Assets\Scripts\hide_unhide.cs" />
      <Compile Include="Assets\Scripts\hide_unhide_Collider.cs" />
