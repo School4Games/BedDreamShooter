@@ -10,12 +10,21 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
+	private float rotation; 
 	public Boundary boundary;
 	
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
 	private float nextFire;
+
+	public float Health = 5;
+	public AudioSource atmo;
+
+	void Start()
+	{
+	
+	}
 
 	void Update ()
 	{
@@ -32,20 +41,48 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		//zuweisung der keys w,a,s,d || Arrowkeys & velocity
+				//zuweisung der keys w,a,s,d || Arrowkeys & velocity
 
-		float moveHorizontal = Input.GetAxis ("Horizontal");
-		float moveVertical = Input.GetAxis ("Vertical");
+				float moveHorizontal = Input.GetAxis ("Horizontal");
+				float moveVertical = Input.GetAxis ("Vertical");
 		
-		Vector3 movement = new Vector3 (moveHorizontal, moveVertical,0.0f);
-		rigidbody2D.velocity = movement * speed;
+				Vector3 movement = new Vector3 (moveHorizontal, moveVertical, 0.0f);
+				rigidbody2D.velocity = movement * speed;
 		
-		rigidbody2D.position = new Vector3 
+				rigidbody2D.position = new Vector3 
 			(
 				//boundary auf x und y axe
 				Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), 
 
 				Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax)
 				);
+				
+				//rigidbody.rotation = Quaternion.Euler (0f, 0f, rigidbody.velocity.x * -tilt);  			// Anscheint gibt es probleme mit Quaternion.Euler und rigidbody2D.rotation
+				//rigidbody2D.MoveRotation(rigidbody2D.rotation + speed * Time.deltaTime); / von Unity kopiert
+				//Rigidbody2D.rotation = (Rigidbody2D.rotation + speed * Time.deltaTime); // Rotiert leider permanent 
+	}
+
+	void ApplyDamage (float damage)
+	{
+		
+		if (Health > 0) 										// is Health bigger than 0, do the following steps
+		{
+			// von health wird damage abgezogen
+			Health -= damage;								// it's possible /Health = Health - damage / but it is longer
+			
+			if (Health < 0)									// is Health lower than 0
+				Health = 0;									// than put Health to 0 
+			
+			//what happens if Health = 0?
+			if (Health == 0) 
+			{
+				// GameOver
+				RestartScene ();
+			}
+		}
+	}
+	void RestartScene()
+	{
+		Application.LoadLevel (Application.loadedLevel);
 	}
 }

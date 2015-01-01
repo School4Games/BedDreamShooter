@@ -3,7 +3,15 @@ using System.Collections;
 
 public class Send_Damage_Collider : MonoBehaviour {
 
-	public int damageValue = 1;
+
+	void start ()
+	{
+
+	}
+
+}
+
+	/*public int damageValue = 1;
 	public string tag = ("Player"); 
 
 	// Use this for initialization
@@ -16,4 +24,4 @@ public class Send_Damage_Collider : MonoBehaviour {
 		if (other.gameObject.tag == tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 	}
-}
+*/
