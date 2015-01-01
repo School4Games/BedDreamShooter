@@ -9,23 +9,25 @@ public class Boundary
 
 public class PlayerController : MonoBehaviour
 {
+	//Bed
 	public float speed;
 	public float rotation; 
 	public Boundary boundary;
-	
+
+	//Shot
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float fireRate;
 	private float nextFire;
-
+	//LifePoints
 	public float Health = 5;
 	//public AudioSource atmo;
-
+	
 	void Start()
 	{
 	
 	}
-
+	
 	void Update ()
 	{
 		// wenn rechtemaustaste gedrückt wird, wird ein Schuss am Player gespawnt 

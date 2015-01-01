@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\DestroyEnemyBGhost.cs" />
      <Compile Include="Assets\Scripts\DestroyEnemySlimer.cs" />
      <Compile Include="Assets\Scripts\DestroyPillow.cs" />
+     <Compile Include="Assets\Scripts\EndGameController.cs" />
      <Compile Include="Assets\Scripts\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Enemy_Controller.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
