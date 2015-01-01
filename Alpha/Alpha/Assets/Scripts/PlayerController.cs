@@ -10,7 +10,7 @@ public class Boundary
 public class PlayerController : MonoBehaviour
 {
 	public float speed;
-	private float rotation; 
+	public float rotation; 
 	public Boundary boundary;
 	
 	public GameObject shot;
@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 	private float nextFire;
 
 	public float Health = 5;
-	public AudioSource atmo;
+	//public AudioSource atmo;
 
 	void Start()
 	{
