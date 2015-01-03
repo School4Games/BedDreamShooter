@@ -40,7 +40,7 @@ public class ShotSpwan : MonoBehaviour {                    //COPY FROM www.pixe
 			}
 			
 			// Make the weapon shot always towards it
-			Move move = shotTransform.gameObject.GetComponent<Move>();
+			Movee move = shotTransform.gameObject.GetComponent<Movee>();
 			if (move != null)
 			{
 				move.direction = this.transform.right; // towards in 2D space is the right of the sprite

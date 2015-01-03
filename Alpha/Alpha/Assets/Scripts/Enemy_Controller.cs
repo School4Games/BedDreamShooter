@@ -8,30 +8,21 @@ public class Enemy_Controller : MonoBehaviour
 	public string tag = ("Player"); 
 	public float Health = 5;
 
-	public GameObject shot;
-	public Transform shotSpawn;
-	public float fireRate;
-	private float nextFire;
+
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{	
-				//Shotspawn
-			if (Input.GetButton("Fire1") && Time.time > nextFire)
-		{
-			nextFire = Time.time  + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		} 	
 				//Movement
 			float translation = Speed*Time.deltaTime;
 			transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
-	}
 
+	}
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")

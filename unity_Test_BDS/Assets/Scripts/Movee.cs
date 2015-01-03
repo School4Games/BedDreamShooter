@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Move : MonoBehaviour {
+public class Movee : MonoBehaviour {
 
 
 		public Vector2 speed = new Vector2(10, 10);
@@ -19,6 +19,6 @@ public class Move : MonoBehaviour {
 		void FixedUpdate()
 		{
 			// Apply movement to the rigidbody
-			rigidbody2D.velocity = movement;
+			//rigidbody2D.velocity = movement;
 		}
 	}

@@ -1,10 +1,8 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ShotSpwan.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\WayPointt.cs">
     <Files>
-      <File FileName="Assets\Scripts\Move.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\ShotSpwan.cs" Line="48" Column="4" />
-      <File FileName="Assets\Scripts\ShotScript.cs" Line="7" Column="35" />
+      <File FileName="Assets\Scripts\WayPointt.cs" Line="4" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

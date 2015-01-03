@@ -57,13 +57,15 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\HealthController_Enemy.cs" />
+     <Compile Include="Assets\Scripts\MoonWay.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\PillowDamage.cs" />
      <Compile Include="Assets\Scripts\Pillow_Controller.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Projectile_Enemy.cs" />
-     <Compile Include="Assets\Scripts\TestingScript.cs" />
+     <Compile Include="Assets\Scripts\SlimerShot.cs" />
      <Compile Include="Assets\Scripts\UIManagerScript.cs" />
+     <Compile Include="Assets\Scripts\WayPoints.cs" />
      <Compile Include="Assets\Scripts\hide_unhide.cs" />
      <Compile Include="Assets\Scripts\hide_unhide_Collider.cs" />
      <Compile Include="Assets\Scripts\hide_unhide_Light.cs" />
