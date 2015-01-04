@@ -9,7 +9,8 @@ public class DestroyEnemyBGhost : MonoBehaviour {
 	}
 	
 	
-	void OnTriggerEnter2D(Collider2D col) {
+	void OnTriggerEnter2D(Collider2D col) 
+	{
 		
 		//Debug.Log("collosion name = " + col.gameObject.tag);
 		if (col.gameObject.tag == "BGhost")
@@ -17,6 +18,8 @@ public class DestroyEnemyBGhost : MonoBehaviour {
 			Destroy(col.gameObject);  //gameObject mit dem die Collision stattfindet (enemy)
 			//Destroy(this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 		}
+
+
 	}
 	
 	// Update is called once per frame

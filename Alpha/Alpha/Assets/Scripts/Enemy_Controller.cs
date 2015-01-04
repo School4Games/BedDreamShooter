@@ -36,6 +36,22 @@ public class Enemy_Controller : MonoBehaviour
 	{
 		if (other.gameObject.tag == tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
+		
+		{
+			if (other.gameObject.tag == "Player")
+			{
+				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+				
+			}
+		}
+		
+		{
+			if (other.gameObject.tag == "Player")
+			{
+				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+				
+			}
+		}
 	}
 
 		//HealtController

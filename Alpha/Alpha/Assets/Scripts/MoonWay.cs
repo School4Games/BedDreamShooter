@@ -2,7 +2,8 @@
 using System.Collections;
 
 public class MoonWay: MonoBehaviour {
-	
+
+
 	public Transform[] waypoint;        // emptyObjekts = waypoints
 	public float patrolSpeed = 3f;       // Geschwindigkeit zwischen den Waypoints
 	public bool  loop = true;       // mit hacken setzten kann man das loopen
@@ -34,7 +35,7 @@ public class MoonWay: MonoBehaviour {
 			} 
 		}
 	}
-	
+	// geh zum punkt x dann zum punkt y ... und so weiter
 	void  patrol ()
 	{
 		
@@ -54,9 +55,17 @@ public class MoonWay: MonoBehaviour {
 		}
 		else
 		{        
-			var rotation= Quaternion.LookRotation(target - transform.position);
+			//var rotation= Quaternion.LookRotation(target - transform.position);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
 			character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
 		}  
 	}
+
+	/*void GameOver()
+	{
+		if 
+		Application.Quit;
+	}*/
+
+
 }

@@ -1,8 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\WayPointt.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Alpha\Alpha\Assets\Scripts\DestroyEnemyBGhost.cs">
     <Files>
-      <File FileName="Assets\Scripts\WayPointt.cs" Line="4" Column="23" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\DestroyEnemyBGhost.cs" Line="27" Column="2" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\WayPoints.cs" Line="36" Column="6" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\DestroyEnemySlimer.cs" Line="13" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

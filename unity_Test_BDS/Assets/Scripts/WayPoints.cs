@@ -11,9 +11,8 @@ public class WayPoints: MonoBehaviour {
 	
 	private float curTime;
 	private int currentWaypoint = 0;
-	private CharacterController character;
 	//GhostSpeed
-	//public float Speed;
+	public float Speed;
 	
 /*	
 	public GameObject shot;
@@ -24,16 +23,16 @@ public class WayPoints: MonoBehaviour {
 
 	void  Start ()
 	{
-		character = GetComponent<CharacterController>();
+		
 
 	}
 	
 	void  Update ()
 	{
-		/*{
+		{
 			float translation = Speed*Time.deltaTime;
 			transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
-		}*/
+		}
 
 		if(currentWaypoint < waypoint.Length)
 		{
@@ -70,7 +69,7 @@ public class WayPoints: MonoBehaviour {
 
 			//var rotation= Quaternion.LookRotation(target - transform.position);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
-			character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
+			//(moveDirection.normalized * patrolSpeed * Time.deltaTime);
 		}  
 	}
 }

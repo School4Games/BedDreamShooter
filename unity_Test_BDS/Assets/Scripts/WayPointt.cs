@@ -12,10 +12,10 @@ public class WayPointt: MonoBehaviour {
 	private float curTime;
 	private int currentWaypoint = 0;
 	private CharacterController character; // soll später das movement script sein
-	
 	void  Start ()
 	{
 		
+		//character = GetComponent<CharacterController>();
 		character = GetComponent<CharacterController>();
 	}
 	
@@ -54,7 +54,7 @@ public class WayPointt: MonoBehaviour {
 		}
 		else
 		{        
-			var rotation= Quaternion.LookRotation(target - transform.position);
+			//var rotation= Quaternion.LookRotation(target - transform.position);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
 			character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
 		}  

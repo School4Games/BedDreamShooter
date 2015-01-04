@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+﻿/*using UnityEngine;
 using System.Collections;
 
 public class ShotSpwan : MonoBehaviour {                    //COPY FROM www.pixelnest.io/tutorials/2d-game-unity/shooting-1/
@@ -40,7 +40,7 @@ public class ShotSpwan : MonoBehaviour {                    //COPY FROM www.pixe
 			}
 			
 			// Make the weapon shot always towards it
-			Movee move = shotTransform.gameObject.GetComponent<Movee>();
+			//Movee move = shotTransform.gameObject.GetComponent<Movee>();
 			if (move != null)
 			{
 				move.direction = this.transform.right; // towards in 2D space is the right of the sprite
@@ -55,4 +55,4 @@ public class ShotSpwan : MonoBehaviour {                    //COPY FROM www.pixe
 			return shootCooldown <= 0f;
 		}
 	}
-}
+}*/

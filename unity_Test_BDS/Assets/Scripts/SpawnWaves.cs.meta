@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 73599aa80f4a3be42be86687f19fa17f
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - EasyEnemy: {fileID: 161724, guid: 099d4a8f4abdc1047b317640cf3d45ad, type: 2}
+  - MediumEnemy: {fileID: 184960, guid: 20865f5cfb8a3de49a8592ea76969d7c, type: 2}
+  - HardEnemy: {fileID: 166002, guid: aa937ea0143befa418512bb287bf7b3f, type: 2}
+  - BossEnemy: {fileID: 139342, guid: 7ba9332a678aa2d4aa72fb7a8b9027ce, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 

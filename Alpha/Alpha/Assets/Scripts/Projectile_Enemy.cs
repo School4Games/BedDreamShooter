@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile_Enemy : MonoBehaviour {			
+public class Projectile_Enemy : MonoBehaviour 
+{			
 	/* Aktuelle Eigenschafften :
 								Speed,
 								Zerstört sich selbst wenn es Boundary verlässt,
@@ -38,6 +39,14 @@ public class Projectile_Enemy : MonoBehaviour {
 	{
 		if (other.gameObject.tag == tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
+			
+		{
+			if (other.gameObject.tag == "Player")
+			{
+				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+				
+			}
+		}
 	
 	}
 }
