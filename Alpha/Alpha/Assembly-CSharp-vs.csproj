@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\HealthController.cs" />
      <Compile Include="Assets\Scripts\HealthController_Enemy.cs" />
+     <Compile Include="Assets\Scripts\Ingefinger.cs" />
      <Compile Include="Assets\Scripts\MoonWay.cs" />
      <Compile Include="Assets\Scripts\Mover.cs" />
      <Compile Include="Assets\Scripts\PillowDamage.cs" />
@@ -70,6 +71,7 @@
      <Compile Include="Assets\Scripts\hide_unhide_Collider.cs" />
      <Compile Include="Assets\Scripts\hide_unhide_Light.cs" />
      <Compile Include="Assets\Scripts\scrollingScript.cs" />
+     <Compile Include="Assets\Scripts\theFinger.cs" />
      <Compile Include="Assets\Scripts\tiltFromMovement.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
