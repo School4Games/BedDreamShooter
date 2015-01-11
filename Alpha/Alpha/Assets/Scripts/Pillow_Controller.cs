@@ -5,8 +5,6 @@ public class Pillow_Controller : MonoBehaviour {
 
 	public float speed;
 	public float rSpeed;
-	public int damageValue = 1;
-	public string tag = ("Player");
 	
 		//Erklärt sich selbst.. wenn nicht ... Pillow bewegt sich nach rechts mit speed xy
 	void Start ()
@@ -36,11 +34,6 @@ public class Pillow_Controller : MonoBehaviour {
 		if (col.gameObject.tag == "Slimer")
 		{
 			Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-			
-		}
-		{
-			if (col.gameObject.tag == tag)
-				col.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 			
 		}
 	}
