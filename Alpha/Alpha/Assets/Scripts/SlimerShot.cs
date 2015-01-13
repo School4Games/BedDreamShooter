@@ -5,25 +5,32 @@ public class SlimerShot : MonoBehaviour
 {
 
 	public GameObject shot;
-	public float startWait;
 	public Transform shotSpawn;
-	public float fireRate;
-	private float nextFire;
+	public float Timer;
+	public float ResetTimer;
 	// Use this for initialization
 	void Start () 
 	{
-	
+		ResetTimer = Timer;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-
-		if  (Time.deltaTime > nextFire)
+		if(Timer <= 0)
 		{
-			nextFire = Time.deltaTime + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+			Fire ();
+			Timer = ResetTimer;
 		}
+		else
+		{
+			Timer -= Time.deltaTime;
+		}
+
+	}
+	void Fire()
+	{
+		Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 	}
 	
 
