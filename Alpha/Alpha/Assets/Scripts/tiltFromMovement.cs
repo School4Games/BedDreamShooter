@@ -22,29 +22,32 @@ public class tiltFromMovement : MonoBehaviour
 	{
 		float verticalSpeed = Input.GetAxis ("Vertical");
 
-		rotation += rotationSpeed * Time.deltaTime * verticalSpeed;
+		rotation += rotationSpeed * Time.deltaTime *verticalSpeed;
 			//Wenn rotation größer als max winkel ist 
 		if (rotation > maxAngleDegrees) 
 			{
 				//Setzte rotations winkel dem max winkel gleich
 				rotation = maxAngleDegrees;
 			}
-				//Soll wenn rotations winkel gleich der max rotation ist wieder auf 0 gesetzt werden 
-
-			if (rotation == maxAngleDegrees)
-				{
-					rotation = 0.0f;
-				}
-
+				
 		else if (rotation < -maxAngleDegrees) 
 			{
 				rotation = -maxAngleDegrees;
 			}
-			if (rotation == -maxAngleDegrees)
-				{
-					rotation = 0.0f;
-				}
-
+		/*else if (this.transform.rotation.z > 0)
+		{
+			rotation -= rotationSpeed * Time.deltaTime;
+			Mathf.Round(rotation);
+		}
+		else if (this.transform.rotation.z < 0)
+		{
+			rotation += rotationSpeed * Time.deltaTime;
+			Mathf.Floor(rotation);
+		}
+		else if (this.transform.rotation.z == 0)
+		{
+			rotation = 0;
+		}*/
 		this.transform.rotation = Quaternion.Euler (0, 0, rotation);
 	}
 }

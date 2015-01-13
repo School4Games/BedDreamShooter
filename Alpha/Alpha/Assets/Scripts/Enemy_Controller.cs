@@ -7,8 +7,8 @@ public class Enemy_Controller : MonoBehaviour
 	public int damageValue = 1;
 	public string tag = ("Player"); 
 	public float Health = 5;
-
-
+	public float deathTimer;
+	public bool startTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,14 @@ public class Enemy_Controller : MonoBehaviour
 				//Movement
 			float translation = Speed*Time.deltaTime;
 			transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
-
+		if (startTimer) 
+		{
+			deathTimer -= Time.deltaTime;
+		}
+		if (deathTimer < 0)
+		{
+			Destroy(this.gameObject);
+		}
 	}
 	void OnTriggerExit2D(Collider2D other)
 	{
@@ -29,6 +36,10 @@ public class Enemy_Controller : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
+			if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost")
+				{
+				startTimer = false;
+				}
 	}
 
 		//SendDamage to Player
@@ -44,15 +55,14 @@ public class Enemy_Controller : MonoBehaviour
 				
 			}
 		}
-		
+		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
 		{
-			if (other.gameObject.tag == "Player")
-			{
-				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-				
-			}
+			startTimer = true;
+
 		}
-	}
+
+		
+		}
 
 		//HealtController
 	void ApplyDamage (float damage)
