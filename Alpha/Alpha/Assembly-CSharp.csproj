@@ -62,6 +62,9 @@
      <Compile Include="Assets\Scripts\Pillow_Controller.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Projectile_Enemy.cs" />
+     <Compile Include="Assets\Scripts\Scripts\MainMenuControler.cs" />
+     <Compile Include="Assets\Scripts\Scripts\MousePointer.cs" />
+     <Compile Include="Assets\Scripts\Scripts\NewBehaviourScript.cs" />
      <Compile Include="Assets\Scripts\SlimerShot.cs" />
      <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\UIManagerScript.cs" />
