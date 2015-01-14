@@ -1,9 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class theFinger : MonoBehaviour {
-
-
+public class NewBehaviourScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -11,8 +9,7 @@ public class theFinger : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update ()
-	{
-		this.renderer.enabled = (Input.GetKey(KeyCode.I)) && (Input.GetKey(KeyCode.N));
+	void Update () {
+	
 	}
 }

@@ -9,7 +9,7 @@ public class Projectile_Enemy : MonoBehaviour
 								sendet damage an player */
 																					 
 	public float Speed;																 
-	public int damageValue = 1;
+	public float damageValue = 1;
 	public string tag = ("Player"); 
 	
 	// Use this for initialization
