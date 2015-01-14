@@ -6,7 +6,8 @@ public class hide_unhide : MonoBehaviour
 {
 
 	public KeyCode onKey = KeyCode.Y;
-	public float currentEnergy;
+	//Aktueller wert der 
+	public float currentEnergy;  
 	public float maxEnergy;
 	public float reachargerate;
 	private bool useLight;
