@@ -1,11 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\tiltFromMovement.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\hide_unhide.cs">
     <Files>
-      <File FileName="Assets\Scripts\Projectile_Enemy.cs" Line="55" Column="1" />
-      <File FileName="Assets\Scripts\SlimerShot.cs" Line="39" Column="1" />
-      <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\PlayerController.cs" Line="83" Column="5" />
+      <File FileName="Assets\Scripts\Projectile_Enemy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SlimerShot.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\tiltFromMovement.cs" Line="3" Column="1" />
+      <File FileName="Assets\Scripts\PillowDamage.cs" Line="13" Column="101" />
+      <File FileName="Assets\Scripts\hide_unhide.cs" Line="20" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
