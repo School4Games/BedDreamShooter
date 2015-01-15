@@ -6,13 +6,19 @@ public class hide_unhide : MonoBehaviour
 {
 
 	public KeyCode onKey = KeyCode.Y;
-	//Aktueller wert der 
+	//Aktueller wert der Energy
 	public float currentEnergy;  
+	//die Maximale Energy
 	public float maxEnergy;
+	// die regenerations geschwindigkeit der Energy
 	public float reachargerate;
+	// überprüfung ob Licht an oder aus ist
 	private bool useLight;
+	// wenn energy = 0, dann muss erst wieder bis zum minLoader geladen werden bis die Taschenlampe wieder angeht
 	public float minLoader;
+	//überprüfung des MinLoaders
 	private bool energyEmphty;
+	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
 
 	// Use this for initialization
