@@ -17,6 +17,8 @@ public class hide_unhide : MonoBehaviour
 	// wenn energy = 0, dann muss erst wieder bis zum minLoader geladen werden bis die Taschenlampe wieder angeht
 	public float minLoader;
 	//überprüfung des MinLoaders
+	public float reload;
+	//Reload-Rate der FL
 	private bool energyEmphty;
 	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
@@ -76,7 +78,7 @@ public class hide_unhide : MonoBehaviour
 
 	void Reacharge ()
 	{
-		currentEnergy += reachargerate * Time.deltaTime;
+		currentEnergy += reachargerate * (Time.deltaTime * reload);
 	}
 	public float Saft()
 	{
