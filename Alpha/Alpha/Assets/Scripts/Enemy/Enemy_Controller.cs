@@ -9,7 +9,7 @@ public class Enemy_Controller : MonoBehaviour
 	public float Health = 5;
 	public float deathTimer;
 	public bool startTimer;
-
+	//public bool Intrigger;
 	// Use this for initialization
 	void Start () {
 
@@ -36,10 +36,12 @@ public class Enemy_Controller : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-			if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost")
-				{
-				startTimer = false;
-				}
+
+		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
+		{
+			startTimer = false;
+			
+		}
 	}
 
 		//SendDamage to Player
@@ -55,6 +57,7 @@ public class Enemy_Controller : MonoBehaviour
 				
 			}
 		}
+
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
 		{
 			startTimer = true;
@@ -62,7 +65,8 @@ public class Enemy_Controller : MonoBehaviour
 		}
 
 		
-		}
+	}
+	
 
 		//HealtController
 	void ApplyDamage (float damage)

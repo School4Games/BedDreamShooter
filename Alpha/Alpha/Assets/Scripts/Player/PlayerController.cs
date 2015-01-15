@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
 {
 	//Bed
 	public float speed;
-	public float rotation; 
+	private float rotation; 
+
 	public Boundary boundary;
 
 	//Shot
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
 	private float nextFire;
 	//LifePoints
 	public float Health = 5;
-	//public AudioSource atmo;
+
 	
 	void Start()
 	{

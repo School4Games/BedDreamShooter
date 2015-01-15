@@ -32,6 +32,7 @@ public class hide_unhide : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		this.collider2D.enabled = Input.GetKey (onKey);
 
 		energyBar.value = currentEnergy;
 

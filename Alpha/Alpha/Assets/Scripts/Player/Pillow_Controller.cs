@@ -2,9 +2,12 @@
 using System.Collections;
 
 public class Pillow_Controller : MonoBehaviour {
-
+	//Pillow
 	public float speed;
-	public float rSpeed;
+	public float rotationSpeed;
+	//Damage
+	public int damageValue = 1;
+	public string tag = ("Player");
 	
 		//Erklärt sich selbst.. wenn nicht ... Pillow bewegt sich nach rechts mit speed xy
 	void Start ()
@@ -15,7 +18,7 @@ public class Pillow_Controller : MonoBehaviour {
 		//Kissen Routiert *hoffentlich*
 	void Update()
 	{
-		rigidbody2D.MoveRotation (rigidbody2D.rotation + rSpeed * Time.deltaTime);
+		rigidbody2D.MoveRotation (rigidbody2D.rotation + rotationSpeed * Time.deltaTime);
 	}
 
 		//Zerstört sich selbst wenn es aus der Boundary rausgeht (Exit) NIEMALS DAS 2D vergessen bei einem 2D GAME -.-"
@@ -36,5 +39,8 @@ public class Pillow_Controller : MonoBehaviour {
 			Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 			
 		}
+
+		if (col.gameObject.tag == tag)
+			col.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 	}
 }
