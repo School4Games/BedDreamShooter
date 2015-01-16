@@ -4,13 +4,16 @@ using System.Collections;
 public class MainMenuControler : MonoBehaviour {
 
 
-		public void StartGame() {
+	public void StartGame() 
+	
+		{
 			Application.LoadLevel ("Alpha Version");
 		}
 
 	public void ExitGame()
-	{
-		Application.Quit ();
-	}
+	
+		{
+			Application.Quit ();
+		}
 
 }
