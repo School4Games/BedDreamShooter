@@ -13,6 +13,9 @@ public class Projectile_Enemy : MonoBehaviour
 	public string tag = ("Player"); 
 	public float deathTimer;
 	public bool startTimer;
+	//public AudioClip spitHit;
+	public GameObject SpuckeSound;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -50,6 +53,7 @@ public class Projectile_Enemy : MonoBehaviour
 		}
 	}
 
+
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.gameObject.tag == tag)
@@ -58,8 +62,14 @@ public class Projectile_Enemy : MonoBehaviour
 		{
 			if (other.gameObject.tag == "Player")
 			{
+
+				Instantiate(SpuckeSound, transform.position, transform.rotation);
+				Debug.Log("jep");
+				//audio.PlayOneShot(spitHit, 1.0F);	
+				//spitHit.Play();
 				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-				
+							
+			
 			}
 		}
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
@@ -70,5 +80,7 @@ public class Projectile_Enemy : MonoBehaviour
 	
 	}
 }
+
+
 
 
