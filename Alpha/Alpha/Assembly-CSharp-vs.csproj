@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Ingame_UI\Ingefinger.cs" />
      <Compile Include="Assets\Scripts\Ingame_UI\MoonWay.cs" />
      <Compile Include="Assets\Scripts\Ingame_UI\UIManagerScript.cs" />
+     <Compile Include="Assets\Scripts\Ingame_UI\inGamePause.cs" />
      <Compile Include="Assets\Scripts\Ingame_UI\scrollingScript.cs" />
      <Compile Include="Assets\Scripts\Player\DestroyPillow.cs" />
      <Compile Include="Assets\Scripts\Player\HealthController.cs" />
