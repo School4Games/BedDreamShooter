@@ -4,10 +4,8 @@ using System.Collections;
 
 public class inGamePause : MonoBehaviour 
 {
-	public float alpha;
-	public CanvasGroup pauseUI;
-
-
+	public bool breaker;
+	public GameObject pause;
 	// Use this for initialization
 	void Start () 
 	{
@@ -15,17 +13,11 @@ public class inGamePause : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
-		/*if (Input.GetKeyDown (KeyCode.P))
-		{
-			CanvasGroup.alpha = new Alpha(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
-		}
-		else
-		{
-			CanvasGroup.alpha = 0;
-		}*/
+
 	}
+
 
 	// Pause
 	IEnumerator PauseCoroutine()
@@ -35,15 +27,20 @@ public class inGamePause : MonoBehaviour
 
 			if (Input.GetKeyDown (KeyCode.P))
 			{
+				//this.GameObject.SetActive(false);
+
 				if (Time.timeScale == 0)
+
 				
 				{
 					Time.timeScale = 1;
+
 				
 				}
 				else
 				{
 					Time.timeScale = 0;
+					//this.GameObject.SetActive(true);
 				
 				}
 			}
