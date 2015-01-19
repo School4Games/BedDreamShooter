@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Enemy\GameController.cs" />
      <Compile Include="Assets\Scripts\Enemy\HealthController_Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy\Projectile_Enemy.cs" />
+     <Compile Include="Assets\Scripts\Enemy\RandomSpawn.cs" />
      <Compile Include="Assets\Scripts\Enemy\SlimerShot.cs" />
      <Compile Include="Assets\Scripts\Enemy\WayPoints.cs" />
      <Compile Include="Assets\Scripts\HighscoreBoard.cs" />
