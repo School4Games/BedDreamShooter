@@ -12,7 +12,7 @@ public class Enemy_Controller : MonoBehaviour
 	//public bool Intrigger;
 	// Use this for initialization
 	public GameObject BGParticle;
-	private int delay = 2;
+
 
 
 	void Start () {
@@ -33,7 +33,7 @@ public class Enemy_Controller : MonoBehaviour
 		{
 			Destroy(this.gameObject);
 			Instantiate (BGParticle, transform.position, transform.rotation);
-			Destroy (BGParticle, delay);
+
 		}
 	}
 	void OnTriggerExit2D(Collider2D other)
