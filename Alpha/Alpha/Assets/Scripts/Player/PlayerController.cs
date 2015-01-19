@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 [System.Serializable]
@@ -22,6 +23,12 @@ public class PlayerController : MonoBehaviour
 	private float nextFire;
 	//LifePoints
 	public float Health = 5;
+	// UI Face
+	public Image redFace;
+	public Image orangeFace;
+	public Image darkYellowFace;
+	public Image yellowFace;
+	public Image greenFace;
 
 	
 	void Start()
@@ -44,6 +51,7 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
+		UIHealth ();
 				//zuweisung der keys w,a,s,d || Arrowkeys & velocity
 
 				float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -88,4 +96,87 @@ public class PlayerController : MonoBehaviour
 	{
 		Application.LoadLevel (Application.loadedLevel);
 	}
+
+	void UIHealth ()
+	{
+		if (Health == 5)
+			//zeige nur greenFace an
+			//entweder ich setze den Alpha auf 0 oder ich mmach das bild enable.
+		{
+			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
+			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
+			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,1);
+		}
+
+		if (Health == 4)
+			//zeige nur yellowFace an
+		{
+			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
+			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
+			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+		}
+
+		if (Health == 3)
+			//zeige nur darkYellowFace an
+		{
+			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
+			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
+			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+		}
+		if (Health == 2)
+			//zeige nur orangeFace an
+		{
+			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
+			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,0);
+			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+		}
+		if (Health == 1)
+			//zeige nur redFace an
+		{
+			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
+			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,0);
+			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,0);
+			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+		}
+	}
+	public float HealthFace ()
+	{
+		return Health;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

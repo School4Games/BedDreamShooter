@@ -11,6 +11,8 @@ public class Projectile_Enemy : MonoBehaviour
 	public float Speed;																 
 	public float damageValue = 1;
 	public string tag = ("Player"); 
+	public float deathTimer;
+	public bool startTimer;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,6 +24,15 @@ public class Projectile_Enemy : MonoBehaviour
 	{
 		float translation = Speed*Time.deltaTime;
 		transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
+
+		if (startTimer) 
+		{
+			deathTimer -= Time.deltaTime;
+		}
+		if (deathTimer < 0)
+		{
+			Destroy(this.gameObject);
+		}
 	}
 
 
@@ -32,6 +43,10 @@ public class Projectile_Enemy : MonoBehaviour
 		if (other.gameObject.tag == "Boundary")
 		{
 			Destroy(gameObject);
+		}
+		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
+		{
+			startTimer = false;
 		}
 	}
 
@@ -46,6 +61,11 @@ public class Projectile_Enemy : MonoBehaviour
 				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 				
 			}
+		}
+		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
+		{
+			startTimer = true;
+			
 		}
 	
 	}
