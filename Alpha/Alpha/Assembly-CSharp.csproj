@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ParticleDestroy.cs" />
+     <Compile Include="Assets\ParticleTest.cs" />
      <Compile Include="Assets\Scripts\EndGameController.cs" />
      <Compile Include="Assets\Scripts\Enemy\BigGhostSpawner.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
@@ -72,6 +74,7 @@
      <Compile Include="Assets\Scripts\Scripts\MainMenuControler.cs" />
      <Compile Include="Assets\Scripts\Scripts\MousePointer.cs" />
      <Compile Include="Assets\Scripts\Scripts\NewBehaviourScript.cs" />
+     <Compile Include="Assets\SoundController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
