@@ -8,6 +8,7 @@ public class Pillow_Controller : MonoBehaviour {
 	//Damage
 	public int damageValue = 1;
 	public string tag = ("Player");
+	public GameObject particleObject;
 	
 		//Erklärt sich selbst.. wenn nicht ... Pillow bewegt sich nach rechts mit speed xy
 	void Start ()
@@ -15,7 +16,7 @@ public class Pillow_Controller : MonoBehaviour {
 		rigidbody2D.velocity = transform.right * speed;
 	}
 
-		//Kissen Routiert *hoffentlich*
+		//Kissen Rotiert *hoffentlich*
 	void Update()
 	{
 		rigidbody2D.MoveRotation (rigidbody2D.rotation + rotationSpeed * Time.deltaTime);
@@ -37,6 +38,8 @@ public class Pillow_Controller : MonoBehaviour {
 		if (col.gameObject.tag == "Slimer")
 		{
 			Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+			//Partikeleffekt wenn das Kissen auf den Gegner trifft
+			Instantiate(particleObject, transform.position, transform.rotation);
 			
 		}
 

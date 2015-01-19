@@ -11,6 +11,10 @@ public class Enemy_Controller : MonoBehaviour
 	public bool startTimer;
 	//public bool Intrigger;
 	// Use this for initialization
+	public GameObject BGParticle;
+	private int delay = 2;
+
+
 	void Start () {
 
 	}
@@ -28,6 +32,8 @@ public class Enemy_Controller : MonoBehaviour
 		if (deathTimer < 0)
 		{
 			Destroy(this.gameObject);
+			Instantiate (BGParticle, transform.position, transform.rotation);
+			Destroy (BGParticle, delay);
 		}
 	}
 	void OnTriggerExit2D(Collider2D other)
@@ -54,6 +60,7 @@ public class Enemy_Controller : MonoBehaviour
 			if (other.gameObject.tag == "Player")
 			{
 				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+
 				
 			}
 		}
@@ -68,7 +75,7 @@ public class Enemy_Controller : MonoBehaviour
 	}
 	
 
-		//HealtController
+		//HealthController
 	void ApplyDamage (float damage)
 	{
 		
@@ -79,7 +86,7 @@ public class Enemy_Controller : MonoBehaviour
 			
 			if (Health < 0)									// is Health lower than 0
 				Health = 0;									// than put Health to 0 
-			
+
 			//what happens if Health = 0?
 			if (Health == 0) 
 			{
@@ -91,7 +98,6 @@ public class Enemy_Controller : MonoBehaviour
 		//ZeroHealth = Death
 	void DestroyEnemy()
 	{
-		
 		Destroy(this.gameObject); // gameObject an welchem das script dranhängt // wird aber erst ausgeführt, wenn health = 0
 	}
 }
