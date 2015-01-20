@@ -21,6 +21,12 @@ public class Enemy_Controller : MonoBehaviour
 				//Movement
 			float translation = Speed*Time.deltaTime;
 			transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
+
+		/*if (!Player.hasActiveFlashlight && startTimer)
+		{
+
+		}*/
+
 		if (startTimer) 
 		{
 			deathTimer -= Time.deltaTime;
