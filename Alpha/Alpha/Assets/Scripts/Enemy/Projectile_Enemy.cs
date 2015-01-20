@@ -13,6 +13,7 @@ public class Projectile_Enemy : MonoBehaviour
 	public string tag = ("Player"); 
 	public float deathTimer;
 	public bool startTimer;
+	public GameObject SoundObject;
 	
 	// Use this for initialization
 	void Start () {
@@ -58,8 +59,9 @@ public class Projectile_Enemy : MonoBehaviour
 		{
 			if (other.gameObject.tag == "Player")
 			{
+			
 				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-				
+				Instantiate(SoundObject, transform.position, transform.rotation);
 			}
 		}
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
