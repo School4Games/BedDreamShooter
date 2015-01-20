@@ -14,6 +14,7 @@ public class Projectile_Enemy : MonoBehaviour
 	public float deathTimer;
 	public bool startTimer;
 	public GameObject SoundObject;
+	public bool Timercheck;
 	
 	// Use this for initialization
 	void Start () {
@@ -23,9 +24,16 @@ public class Projectile_Enemy : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
+
 		float translation = Speed*Time.deltaTime;
 		transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
 
+		if (!Timercheck && startTimer)
+		{
+			startTimer = false;
+		}
+		
 		if (startTimer) 
 		{
 			deathTimer -= Time.deltaTime;
