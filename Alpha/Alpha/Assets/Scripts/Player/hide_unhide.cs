@@ -22,24 +22,35 @@ public class hide_unhide : MonoBehaviour
 	private bool energyEmphty;
 	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
+	public AudioClip FLSound;
 
 	// Use this for initialization
 	void Start () 
 	{
 		energyBar.maxValue = maxEnergy;
 	}
-	
+
+
+
 	// Update is called once per frame
 	void Update () 
 	{
+
+		if (Input.GetKeyDown(onKey)) 
+		//{
+			audio.PlayOneShot (FLSound, 1.0F);
+		//}
+
 		this.collider2D.enabled = Input.GetKey (onKey);
 
 		energyBar.value = currentEnergy;
 
 		if(useLight)
 		{
+
 			 if (Input.GetKey (onKey))
 			{
+
 				this.renderer.enabled = true;
 				currentEnergy -= reachargerate * Time.deltaTime;
 
