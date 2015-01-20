@@ -41,13 +41,13 @@ public class inGamePause : MonoBehaviour
 			if (Input.GetKeyDown (KeyCode.P) || breaker)
 			{
 				//this.GameObject.SetActive(false);
-<<<<<<< HEAD
+
 				AudioListener.pause = false;
 
-=======
+
 				pause.SetActive(true);
 				breaker = false;
->>>>>>> origin/master
+
 				if (Time.timeScale == 0)
 
 				

@@ -52,12 +52,14 @@ public class hide_unhide : MonoBehaviour
 			{
 
 				this.renderer.enabled = true;
+				//this.collider2D.enabled = true;
 				currentEnergy -= reachargerate * Time.deltaTime;
 
 			}
 			else
 			{
 				this.renderer.enabled = false;
+				//this.collider2D.enabled = false;
 				Reacharge();
 			}
 		}
