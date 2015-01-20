@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SlimerShot : MonoBehaviour 
+public class GhostShot : MonoBehaviour 
 {
-
+	
 	public GameObject shot;
 	public Transform shotSpawn;
+	public Transform shotSpawn2;
 	public float Timer;
 	public float ResetTimer;
 	// Use this for initialization
@@ -26,13 +27,13 @@ public class SlimerShot : MonoBehaviour
 		{
 			Timer -= Time.deltaTime;
 		}
-
+		
 	}
 	void Fire()
 	{
 		Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		Instantiate(shot, shotSpawn2.position, shotSpawn.rotation);
 	}
 	
-
+	
 }
-

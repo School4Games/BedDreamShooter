@@ -8,8 +8,8 @@ public class Enemy_Controller : MonoBehaviour
 	public string tag = ("Player"); 
 	public float Health = 5;
 	public float deathTimer;
-	public bool startTimer;
-	public bool Timercheck;
+	private bool startTimer;
+	private bool Timercheck;
 	//public bool Intrigger;
 	// Use this for initialization
 	void Start () {
@@ -19,7 +19,7 @@ public class Enemy_Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{	
-		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().test;
+		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
 				//Movement
 			float translation = Speed*Time.deltaTime;
 			transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
