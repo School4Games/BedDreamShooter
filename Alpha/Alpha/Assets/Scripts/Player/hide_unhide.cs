@@ -23,7 +23,7 @@ public class hide_unhide : MonoBehaviour
 	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
 	public AudioClip FLSound;
-	public bool test;
+	public bool falshlightCheck;
 
 	// Use this for initialization
 	void Start () 
@@ -56,13 +56,13 @@ public class hide_unhide : MonoBehaviour
 				this.renderer.enabled = true;
 
 				currentEnergy -= reachargerate * Time.deltaTime;
-				test = true;
+				falshlightCheck = true;
 
 			}
 			else
 			{
 				this.renderer.enabled = false;
-				test = false;
+				falshlightCheck = false;
 				Reacharge();
 			}
 		}
@@ -83,7 +83,7 @@ public class hide_unhide : MonoBehaviour
 		}
 		if (energyEmphty && minLoader >= currentEnergy)
 		{
-			test = false;
+			falshlightCheck = false;
 			Reacharge();
 		}
 		if(currentEnergy >= minLoader)

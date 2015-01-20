@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\Enemy\EnemyMovement.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy_Controller.cs" />
      <Compile Include="Assets\Scripts\Enemy\GameController.cs" />
+     <Compile Include="Assets\Scripts\Enemy\GhostShot.cs" />
      <Compile Include="Assets\Scripts\Enemy\HealthController_Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy\Projectile_Enemy.cs" />
      <Compile Include="Assets\Scripts\Enemy\RandomSpawn.cs" />
