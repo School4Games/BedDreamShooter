@@ -45,6 +45,7 @@ public class inGamePause : MonoBehaviour
 				AudioListener.pause = false;
 
 
+
 				pause.SetActive(true);
 				breaker = false;
 
@@ -55,6 +56,7 @@ public class inGamePause : MonoBehaviour
 						Time.timeScale = 1;
 
 						pause.SetActive(false);
+			
 
 					}
 				else
@@ -63,6 +65,7 @@ public class inGamePause : MonoBehaviour
 					Time.timeScale = 0;
 					//this.GameObject.SetActive(true);
 					AudioListener.pause = true;
+
 				
 				}
 			}
