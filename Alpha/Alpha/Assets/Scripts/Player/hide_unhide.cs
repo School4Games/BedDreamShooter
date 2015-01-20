@@ -23,10 +23,12 @@ public class hide_unhide : MonoBehaviour
 	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
 	public AudioClip FLSound;
+	public bool test;
 
 	// Use this for initialization
 	void Start () 
 	{
+
 		energyBar.maxValue = maxEnergy;
 	}
 
@@ -52,14 +54,15 @@ public class hide_unhide : MonoBehaviour
 			{
 
 				this.renderer.enabled = true;
-				//this.collider2D.enabled = true;
+
 				currentEnergy -= reachargerate * Time.deltaTime;
+				test = true;
 
 			}
 			else
 			{
 				this.renderer.enabled = false;
-				//this.collider2D.enabled = false;
+				test = false;
 				Reacharge();
 			}
 		}
@@ -80,6 +83,7 @@ public class hide_unhide : MonoBehaviour
 		}
 		if (energyEmphty && minLoader >= currentEnergy)
 		{
+			test = false;
 			Reacharge();
 		}
 		if(currentEnergy >= minLoader)
