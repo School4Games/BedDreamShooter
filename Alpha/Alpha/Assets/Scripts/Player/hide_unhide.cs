@@ -37,9 +37,9 @@ public class hide_unhide : MonoBehaviour
 	{
 
 		if (Input.GetKeyDown(onKey)) 
-		//{
+
 			audio.PlayOneShot (FLSound, 1.0F);
-		//}
+			
 
 		this.collider2D.enabled = Input.GetKey (onKey);
 

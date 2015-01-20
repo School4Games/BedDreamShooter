@@ -5,17 +5,21 @@ using System.Collections;
 public class inGamePause : MonoBehaviour 
 {
 	public bool breaker;
-	public GameObject pause;
+	public Button pause;
 	// Use this for initialization
 	void Start () 
 	{
-		StartCoroutine (PauseCoroutine());
+		//StartCoroutine (PauseCoroutine());
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-
+		if (Input.GetButtonDown ("pause"))
+		{
+			StartCoroutine (PauseCoroutine());
+		}
+		
 	}
 
 
