@@ -28,6 +28,7 @@ public class inGamePause : MonoBehaviour
 			if (Input.GetKeyDown (KeyCode.P))
 			{
 				//this.GameObject.SetActive(false);
+				AudioListener.pause = false;
 
 				if (Time.timeScale == 0)
 
@@ -41,6 +42,7 @@ public class inGamePause : MonoBehaviour
 				{
 					Time.timeScale = 0;
 					//this.GameObject.SetActive(true);
+					AudioListener.pause = true;
 				
 				}
 			}
