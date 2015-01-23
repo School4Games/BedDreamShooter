@@ -12,15 +12,7 @@ public class WayPoints: MonoBehaviour {
 	private float curTime;
 	private int currentWaypoint = 0;
 	private CharacterController character;
-	//GhostSpeed
-	//public float Speed;
-	
-/*	
-	public GameObject shot;
-	public Transform shotSpawn;
-	public float fireRate;
-	private float nextFire;
-*/	
+
 
 	void  Start ()
 	{
@@ -30,10 +22,7 @@ public class WayPoints: MonoBehaviour {
 	
 	void  Update ()
 	{
-		/*{
-			float translation = Speed*Time.deltaTime;
-			transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
-		}*/
+
 
 		if(currentWaypoint < waypoint.Length)
 		{

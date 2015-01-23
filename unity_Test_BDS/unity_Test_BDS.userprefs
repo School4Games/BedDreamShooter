@@ -1,6 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="..\Alpha\Alpha\Assets\Scripts\Enemy\WayPoints.cs">
+    <Files>
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\Enemy\Enemy_Controller.cs" Line="107" Column="2" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\Enemy\EnemyMovement.cs" Line="7" Column="55" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\Enemy\WayPoints.cs" Line="65" Column="2" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

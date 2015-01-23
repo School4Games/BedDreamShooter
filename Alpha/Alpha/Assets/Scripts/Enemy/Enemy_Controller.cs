@@ -4,6 +4,7 @@ using System.Collections;
 public class Enemy_Controller : MonoBehaviour 
 	{
 	public float Speed;
+
 	public int damageValue = 1;
 	public string tag = ("Player"); 
 	public float Health = 5;
