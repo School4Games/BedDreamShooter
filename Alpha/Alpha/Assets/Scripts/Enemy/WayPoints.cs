@@ -6,17 +6,16 @@ public class WayPoints: MonoBehaviour {
 	public Transform[] waypoint;        // emptyObjekts = waypoints
 	public float patrolSpeed = 3f;       // Geschwindigkeit zwischen den Waypoints
 	public bool  loop = true;       // mit hacken setzten kann man das loopen
-	//public float dampingLook= 6.0f;          // How slowly to turn
 	public float pauseDuration = 0;   // pause zwischen den waypoints Waypoint
 	
 	private float curTime;
 	private int currentWaypoint = 0;
-	private CharacterController character;
 
+	private Enemy_Controller character; 
 
 	void  Start ()
 	{
-		character = GetComponent<CharacterController>();
+		character = GetComponent<Enemy_Controller>();
 
 	}
 	

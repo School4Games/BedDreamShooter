@@ -1,10 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\Alpha\Alpha\Assets\Scripts\Enemy\WayPoints.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="C:\Users\Max\Documents\New Unity Project\Assets\Scripts\Player_Controller.cs">
     <Files>
-      <File FileName="..\Alpha\Alpha\Assets\Scripts\Enemy\Enemy_Controller.cs" Line="107" Column="2" />
-      <File FileName="..\Alpha\Alpha\Assets\Scripts\Enemy\EnemyMovement.cs" Line="7" Column="55" />
-      <File FileName="..\Alpha\Alpha\Assets\Scripts\Enemy\WayPoints.cs" Line="65" Column="2" />
+      <File FileName="C:\Users\Max\Documents\New Unity Project\Assets\Scripts\Player_Controller.cs" Line="26" Column="67" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\Player\PlayerController.cs" Line="61" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

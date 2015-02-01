@@ -16,13 +16,13 @@ public class EnemyMovement : MonoBehaviour {
 		Move ();
 
 	}
-	void OnTriggerExit2D(Collider2D other)
+	/*void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")
 		{
 			Destroy(gameObject);
 		}
-	}
+	}*/
 	void Move()
 	{
 		float translation = Speed*Time.deltaTime;
