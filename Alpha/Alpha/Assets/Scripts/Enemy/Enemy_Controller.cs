@@ -116,6 +116,12 @@ public class Enemy_Controller : MonoBehaviour
 
 		
 	}
+
+	void Ghostdoom()
+
+	{
+
+	}
 	
 		//HealtController
 	void ApplyDamage (float damage)
