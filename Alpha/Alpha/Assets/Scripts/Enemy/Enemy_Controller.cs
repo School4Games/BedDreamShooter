@@ -23,23 +23,7 @@ public class Enemy_Controller : MonoBehaviour
 	void Update () 
 	{	
 		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
-																		//Movement
-																	//float translation = Speed*Time.deltaTime;
-																	//transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
-
-																/*if (!Timercheck && startTimer)
-																	{
-																		startTimer = false;
-																	}
-
-																if (startTimer) 
-																{
-																	deathTimer -= Time.deltaTime;
-																}
-																if (deathTimer < 0)
-																{
-																	Destroy(this.gameObject);
-																	}*/
+																	
 		Move ();
 		GhostDeath();
 	}
@@ -115,12 +99,6 @@ public class Enemy_Controller : MonoBehaviour
 					}
 
 		
-	}
-
-	void Ghostdoom()
-
-	{
-
 	}
 	
 		//HealtController
