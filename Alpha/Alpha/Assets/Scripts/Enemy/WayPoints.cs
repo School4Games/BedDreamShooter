@@ -24,16 +24,16 @@ public class WayPoints: MonoBehaviour {
 
 
 		if(currentWaypoint < waypoint.Length)
-		{
-			patrol();
-		}
-		else
-		{    
-			if(loop)
 			{
-				currentWaypoint=0;
-			} 
-		}
+				patrol();
+			}
+			else
+			{    
+				if(loop)
+				{
+					currentWaypoint=0;
+				} 
+			}
 	}
 	
 	void  patrol ()
@@ -58,7 +58,7 @@ public class WayPoints: MonoBehaviour {
 
 			//var rotation= Quaternion.LookRotation(target - transform.position);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
-			character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
+			character.MoveOn(moveDirection.normalized * patrolSpeed * Time.deltaTime);
 		}  
 	}
 }

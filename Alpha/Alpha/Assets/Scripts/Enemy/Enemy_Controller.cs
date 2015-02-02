@@ -41,7 +41,8 @@ public class Enemy_Controller : MonoBehaviour
 																	Destroy(this.gameObject);
 																	}*/
 		Move ();
-		}
+		GhostDeath();
+	}
 
 	void GhostDeath ()
 	{
@@ -64,6 +65,7 @@ public class Enemy_Controller : MonoBehaviour
 	}
 
 	public void Move()
+	
 	{
 		float translation = Speed*Time.deltaTime;
 		
