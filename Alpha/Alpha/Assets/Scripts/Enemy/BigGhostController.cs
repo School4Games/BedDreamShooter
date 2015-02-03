@@ -140,9 +140,9 @@ public class BigGhostController : MonoBehaviour
 		currentWaypoints [1] = W2;
 		currentWaypoints [2] = W3;
 		Wspwaned = true;
-		Destroy(W1,25.0f);
-		Destroy(W2,25.0f);
-		Destroy(W3,25.0f);
+		Destroy(W1,28.0f);
+		Destroy(W2,28.0f);
+		Destroy(W3,28.0f);
 	}
 
 	void GhostDeath ()
