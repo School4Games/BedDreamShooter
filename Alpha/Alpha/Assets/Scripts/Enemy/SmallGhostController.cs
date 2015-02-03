@@ -6,7 +6,7 @@ public class SmallGhostController : MonoBehaviour
 
 	public float damageValue = 1;
 	public string tag = ("Player"); 
-	public float deathTimer;
+	public float deathTimer;		
 	private bool startTimer;
 	private bool Timercheck;
 	public GameObject SoundObject;
@@ -15,10 +15,10 @@ public class SmallGhostController : MonoBehaviour
 
 
 	//Finder
-	private Vector3 characterPos; 
-	private Vector3 playerPos;
+	private Vector3 characterPos; 	//characterPos= die position vom smallGhost,
+	private Vector3 playerPos;		// playerPos= die aktuelle position vom Player
 	private GameObject player;
-	private Vector3 movementDir;
+	private Vector3 movementDir;	//movementDir= der richtungs Vector 
 	public float speed;
 	// Use this for initialization
 
@@ -32,14 +32,17 @@ public class SmallGhostController : MonoBehaviour
 	void Update()
 
 	{
-		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
+		//Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
+		Death();
 	}
 	void Finder()
 	{
+		//Find player	
 		player = GameObject.FindGameObjectWithTag("Player");
+
 		characterPos = this.transform.position;
 		playerPos = player.transform.position;
-		
+
 		movementDir = playerPos - characterPos;
 		movementDir = movementDir.normalized;
 	}

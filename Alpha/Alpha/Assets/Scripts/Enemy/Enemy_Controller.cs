@@ -10,9 +10,6 @@ public class Enemy_Controller : MonoBehaviour
 	public int damageValue = 1;
 	public string tag = ("Player"); 
 	public float Health = 5;
-	public float deathTimer;
-	private bool startTimer;
-	private bool Timercheck;
 	//public bool Intrigger;
 	// Use this for initialization
 	void Start () {
@@ -22,31 +19,12 @@ public class Enemy_Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{	
-		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
+
 																	
 		Move ();
-		GhostDeath();
+
 	}
-
-	void GhostDeath ()
-	{
-		if (!Timercheck && startTimer) 
-
-			{
-				startTimer = false;
-			}
-
-		if (startTimer) 
-
-			{
-				deathTimer -= Time.deltaTime;
-			}
-		if (deathTimer < 0) 
-
-			{
-				Destroy (this.gameObject);
-			}
-	}
+	
 
 	public void Move()
 	
@@ -71,11 +49,6 @@ public class Enemy_Controller : MonoBehaviour
 				Destroy(gameObject);
 			}
 
-		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-			{
-				startTimer = false;
-				
-			}
 	}
 
 		//SendDamage to Player
@@ -91,13 +64,6 @@ public class Enemy_Controller : MonoBehaviour
 						
 					}
 			}
-
-			if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-					{
-						startTimer = true;
-
-					}
-
 		
 	}
 	
