@@ -10,7 +10,7 @@ public class Projectile_Enemy : MonoBehaviour
 																					 
 	public float Speed;																 
 	public float damageValue = 1;
-	public string tag = ("Player"); 
+	public string Tag; 
 	public float deathTimer;
 	public bool startTimer;
 	public GameObject SoundObject;
@@ -68,7 +68,7 @@ public class Projectile_Enemy : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == tag)
+		if (other.gameObject.tag == Tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 			
 		{

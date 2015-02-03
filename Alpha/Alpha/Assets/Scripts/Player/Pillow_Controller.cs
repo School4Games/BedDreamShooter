@@ -7,7 +7,7 @@ public class Pillow_Controller : MonoBehaviour {
 	public float rotationSpeed;
 	//Damage
 	public int damageValue = 1;
-	public string tag = ("Player");
+	public string Tag;
 	public GameObject shotParticle;
 	
 		//Erklärt sich selbst.. wenn nicht ... Pillow bewegt sich nach rechts mit speed xy
@@ -44,7 +44,7 @@ public class Pillow_Controller : MonoBehaviour {
 			
 		}
 
-		if (col.gameObject.tag == tag)
+		if (col.gameObject.tag == Tag)
 			col.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 	}
 }

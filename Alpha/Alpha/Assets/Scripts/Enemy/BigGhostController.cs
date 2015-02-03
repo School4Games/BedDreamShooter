@@ -11,6 +11,9 @@ public class BigGhostController : MonoBehaviour
 	public float deathTimer;
 	private bool startTimer;
 	private bool Timercheck;
+	public int scoreValue;
+	public int damageValue = 1;
+	public string Tag;
 
 	//WayPoints
 	public float patrolSpeed = 3f;       // Geschwindigkeit zwischen den Waypoints
@@ -143,6 +146,7 @@ public class BigGhostController : MonoBehaviour
 		if (deathTimer < 0) 
 			
 		{
+			ScoreManager.score += scoreValue;
 			Destroy (this.gameObject);
 		}
 	}
@@ -178,6 +182,9 @@ public class BigGhostController : MonoBehaviour
 	//SendDamage to Player
 	void OnTriggerEnter2D(Collider2D other)
 	{
+
+		if (other.gameObject.tag == Tag)
+			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 
 		{
 			if (other.gameObject.tag == "Player")

@@ -5,11 +5,12 @@ public class SmallGhostController : MonoBehaviour
 {
 
 	public float damageValue = 1;
-	public string tag = ("Player"); 
+	public string Tag; 
 	public float deathTimer;		
 	private bool startTimer;
 	private bool Timercheck;
 	public GameObject SoundObject;
+	public int scoreValue;
 
 
 
@@ -73,6 +74,7 @@ public class SmallGhostController : MonoBehaviour
 		if (deathTimer < 0) 
 			
 		{
+			ScoreManager.score += scoreValue;
 			Destroy (this.gameObject);
 		}
 	}
@@ -93,7 +95,7 @@ public class SmallGhostController : MonoBehaviour
 	
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == tag)
+		if (other.gameObject.tag == Tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 		
 		{

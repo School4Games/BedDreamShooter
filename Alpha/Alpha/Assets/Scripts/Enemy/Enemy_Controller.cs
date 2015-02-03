@@ -8,8 +8,9 @@ public class Enemy_Controller : MonoBehaviour
 	public Vector2 movementDirection = new Vector2(-1,0);
 
 	public int damageValue = 1;
-	public string tag = ("Player"); 
+	public string Tag; 
 	public float Health = 5;
+	public int scoreValue = 10;
 	//public bool Intrigger;
 	// Use this for initialization
 	void Start () {
@@ -54,7 +55,7 @@ public class Enemy_Controller : MonoBehaviour
 		//SendDamage to Player
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == tag)
+		if (other.gameObject.tag == Tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 			
 			{
@@ -82,6 +83,7 @@ public class Enemy_Controller : MonoBehaviour
 				//what happens if Health = 0?
 				if (Health == 0) 
 					{
+					ScoreManager.score += scoreValue;
 						// Enemy Death
 						DestroyEnemy();
 					}
