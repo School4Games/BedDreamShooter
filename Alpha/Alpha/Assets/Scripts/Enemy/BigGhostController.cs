@@ -82,7 +82,6 @@ public class BigGhostController : MonoBehaviour
 		
 		if (Targetreached && Timer <= 0) 
 		{
-<<<<<<< HEAD
 			Timer = 3;
 			Wcounter++;
 
@@ -116,21 +115,6 @@ public class BigGhostController : MonoBehaviour
 		}
 
 
-=======
-			//nur wenn das 2D Sprite vom Geist an ist, dann....
-			if (myShape.enabled == true) 
-			{
-				Instantiate (smalGhosts, Spawn1.transform.position, Quaternion.identity);
-				Instantiate (smalGhosts, Spawn2.transform.position, Quaternion.identity);
-				Wcounter++;
-				Timer = 3;
-			}
-		
-		}
-
-	}
-	
->>>>>>> origin/master
 	void  patrol (Vector3 target)
 	{
 		
@@ -176,15 +160,9 @@ public class BigGhostController : MonoBehaviour
 		currentWaypoints [1] = W2;
 		currentWaypoints [2] = W3;
 		Wspwaned = true;
-<<<<<<< HEAD
 		Destroy(W1,30.0f);
 		Destroy(W2,30.0f);
 		Destroy(W3,30.0f);
-=======
-		Destroy(W1,28.0f);
-		Destroy(W2,28.0f);
-		Destroy(W3,28.0f);
->>>>>>> origin/master
 	}
 
 	void GhostDeath ()
@@ -215,11 +193,7 @@ public class BigGhostController : MonoBehaviour
 			//wenn der Geist durch die Taschenlampe zerstört wurde:
 			//2D Sprite ausschalten
 			myShape.enabled = false;
-<<<<<<< HEAD
 
-=======
-			Debug.Log("Aus");
->>>>>>> origin/master
 			//Partikelsystem ausschalten
 			BurnPart.particleSystem.enableEmission = false;
 			CottonPart.particleSystem.enableEmission = false;
