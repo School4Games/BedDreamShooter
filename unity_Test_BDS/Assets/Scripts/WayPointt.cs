@@ -16,7 +16,8 @@ public class WayPointt: MonoBehaviour {
 	{
 		
 		//character = GetComponent<CharacterController>();
-		character = GetComponent<CharacterController>();
+		//character = GetComponent<CharacterController>();
+
 	}
 	
 	void  Update ()

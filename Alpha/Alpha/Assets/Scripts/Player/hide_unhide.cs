@@ -37,27 +37,32 @@ public class hide_unhide : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		EnergyControll();
+	}
 
+	void EnergyControll()
+	{
+		
 		if (Input.GetKeyDown(onKey)) 
-
-			audio.PlayOneShot (FLSound, 1.0F);
 			
-
+			audio.PlayOneShot (FLSound, 1.0F);
+		
+		
 		this.collider2D.enabled = Input.GetKey (onKey);
-
+		
 		energyBar.value = currentEnergy;
-
+		
 		if(useLight)
 		{
-
-			 if (Input.GetKey (onKey))
+			
+			if (Input.GetKey (onKey))
 			{
-
+				
 				this.renderer.enabled = true;
-
+				
 				currentEnergy -= reachargerate * Time.deltaTime;
 				falshlightCheck = true;
-
+				
 			}
 			else
 			{
@@ -66,7 +71,7 @@ public class hide_unhide : MonoBehaviour
 				Reacharge();
 			}
 		}
-
+		
 		if(currentEnergy >= maxEnergy)
 		{
 			currentEnergy = maxEnergy; 

@@ -10,25 +10,33 @@ public class Projectile_Enemy : MonoBehaviour
 																					 
 	public float Speed;																 
 	public float damageValue = 1;
-	public string tag = ("Player"); 
+	public string Tag; 
 	public float deathTimer;
 	public bool startTimer;
 	public GameObject SoundObject;
 	public bool Timercheck;
-	
+
 	// Use this for initialization
-	void Start () {
-		
+	void Start () 
+	
+	{
+	
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
+		Death ();
+	}
 
+	void Death()
+	{
+		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
+		
 		float translation = Speed*Time.deltaTime;
 		transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
-
+		
 		if (!Timercheck && startTimer)
 		{
 			startTimer = false;
@@ -43,7 +51,6 @@ public class Projectile_Enemy : MonoBehaviour
 			Destroy(this.gameObject);
 		}
 	}
-
 
 
 	//Destroy Object when leaving Boundary
@@ -61,7 +68,7 @@ public class Projectile_Enemy : MonoBehaviour
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == tag)
+		if (other.gameObject.tag == Tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 			
 		{
