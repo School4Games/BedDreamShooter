@@ -1,6 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="C:\Users\Max\Documents\New Unity Project\Assets\Scripts\Player_Controller.cs">
+    <Files>
+      <File FileName="C:\Users\Max\Documents\New Unity Project\Assets\Scripts\Player_Controller.cs" Line="26" Column="67" />
+      <File FileName="..\Alpha\Alpha\Assets\Scripts\Player\PlayerController.cs" Line="61" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

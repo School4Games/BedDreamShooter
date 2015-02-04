@@ -1,16 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\Projectile_Enemy.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\BigGhostController.cs">
     <Files>
-      <File FileName="Assets\Scripts\Enemy\Projectile_Enemy.cs" Line="34" Column="14" />
-      <File FileName="Assets\Scripts\Enemy\Enemy_Controller.cs" Line="27" Column="2" />
-      <File FileName="Assets\Scripts\Player\hide_unhide.cs" Line="26" Column="29" />
+      <File FileName="Assets\Scripts\Enemy\BigGhostController.cs" Line="278" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="D:\BedDreamShooter\Alpha\Alpha\Assets\Scripts\SoundController.cs" line="11" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
