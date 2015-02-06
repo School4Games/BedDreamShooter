@@ -278,7 +278,7 @@ public class BigGhostController : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
 		{
-			ColourChanging ();
+			ColourChanging (); 
 		}
 	}
 

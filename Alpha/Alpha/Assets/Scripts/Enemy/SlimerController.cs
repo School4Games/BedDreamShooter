@@ -5,6 +5,7 @@ public class SlimerController : MonoBehaviour
 {
 
 	public float Speed;
+	public float AngrySpeed;
 	public Vector2 movementDirection = new Vector2(-1,0);
 
 	private float LostTime = 2f;
@@ -39,7 +40,7 @@ public class SlimerController : MonoBehaviour
 	{
 		if (Timer <= 0) 
 		{
-			Fire ();
+			StartCoroutine("Fire");
 			Timer = ResetTimer;
 		} 
 		else 
@@ -71,11 +72,21 @@ public class SlimerController : MonoBehaviour
 				transform.Translate (distance);
 			}
 
-	void Fire()
+	IEnumerator Fire()
 	{
-		Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-	}
 
+				if (Health > 1) {
+						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				} 
+				
+				if (Health == 1)
+				{
+						yield return new WaitForSeconds (5);
+						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				}
+
+
+		}
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")
@@ -116,7 +127,8 @@ public class SlimerController : MonoBehaviour
 				ColourChanging ();
 				DeactivateParticle();
 				StartCoroutine("DoubleShot");
-			Speed = Speed + 1;
+				Speed = AngrySpeed;
+
 				
 				
 
@@ -135,17 +147,18 @@ public class SlimerController : MonoBehaviour
 						// Enemy Death
 						DestroyEnemy();
 					}
-			}
+			} 
 	}
 
 
 	IEnumerator DoubleShot()
 	{
-		Fire ();
-		yield return new WaitForSeconds (0.5f);
-		Fire ();
-	}
-
+				if (Health == 1) {
+						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+						yield return new WaitForSeconds (0.5f);
+						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				}
+		}
 
 	void DeactivateParticle ()
 	{
