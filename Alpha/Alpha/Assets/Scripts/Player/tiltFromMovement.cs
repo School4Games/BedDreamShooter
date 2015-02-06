@@ -18,84 +18,47 @@ public class tiltFromMovement : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	 void Update () 
+	 void FixedUpdate () 
 	{
 				float verticalSpeed = Input.GetAxis ("Vertical");
 
 				rotation += rotationSpeed * Time.deltaTime * verticalSpeed;
 				//Wenn rotation größer als max winkel ist 
-				if (rotation > maxAngleDegrees) {
+				if (rotation > maxAngleDegrees) 
+					{
 						//Setzte rotations winkel dem max winkel gleich
 						rotation = maxAngleDegrees;
-				} else if (rotation < -maxAngleDegrees) {
+					} 
+				else if (rotation < -maxAngleDegrees) 
+					{
 						rotation = -maxAngleDegrees;
-				}
-				if ((verticalSpeed < 0.1) && (verticalSpeed > -0.1)) {
+					}
+				if ((verticalSpeed < 0.1) && (verticalSpeed > -0.1)) 
+					{
 						// um wieviel der Spieler in diesem Frame gedreht werden soll
 						float rotationAmount = rotationSpeed * Time.deltaTime;
 			
 						// wenn die aktuelle Rotation zwischen +rotationAmount und -rotationAmount liegt, also so gut wie 0 ist
-						if ((rotation < rotationAmount) && (rotation > -rotationAmount)) {
+						if ((rotation < rotationAmount) && (rotation > -rotationAmount)) 
+							{
 								// soll sie auf 0 gesetzt werden
 								rotation = 0;
-						}
-			// andernfalls soll sie bei positiven Werten
-			else if (rotation > 0) {
+							}
+						// andernfalls soll sie bei positiven Werten
+						else if (rotation > 0)
+							{
 								// verringert werden​
 								rotation -= rotationAmount;
-						} else {
+							} 
+						else 
+							{
 								// und bei negativen erhöht
 								rotation += rotationAmount;
-						}
-				}
-	
+							}
+					}
 
 				this.transform.rotation = Quaternion.Euler (0, 0, rotation);
-	
-	
+
 		}
 
 }
-/*if (Input.GetAxis(“Vertical”) == 0)
-
-if ((verticalSpeed < 0.1) && (verticalSpeed > -0.1))
-
-		if (rotation > 0)
-	{
-		// Rotation verringern
-		rotation -= rotationSpeed * Time.deltaTime;
-}
-else
-{
-	// Rotation erhöhen
-	rotation += rotationSpeed * Time.deltaTime;
-	// wenn in vertikaler Richtung nicht gesteuert wird
-
-if ((verticalSpeed < 0.1) && (verticalSpeed > -0.1))
-	{
-		// um wieviel der Spieler in diesem Frame gedreht werden soll
-		float rotationAmount = rotationSpeed * Time.deltaTime;
-		
-		// wenn die aktuelle Rotation zwischen +rotationAmount und -rotationAmount liegt, also so gut wie 0 ist
-		if ((rotation < rotationAmount) && (rotation > -rotationAmount))
-		{
-			// soll sie auf 0 gesetzt werden
-			rotation = 0;
-		}
-		// andernfalls soll sie bei positiven Werten
-		else if (rotation > 0)
-		{
-			// verringert werden​
-			rotation -= rotationAmount;
-		}
-		else
-		{
-			// und bei negativen erhöht
-			rotation += rotationAmount;
-		}
-	}
-}*/
-
-
-
-

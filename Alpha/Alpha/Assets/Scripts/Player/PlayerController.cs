@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 	//Bed
 	public float speed;
 	private float rotation; 
-
+	//
 	public Boundary boundary;
 
 	//Shot
@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 		{
 			nextFire = Time.time + fireRate;
 			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		
 		} 
 
 	}
@@ -61,37 +60,30 @@ public class PlayerController : MonoBehaviour
 				rigidbody2D.velocity = movement * speed;
 		
 				rigidbody2D.position = new Vector3 
-			(
 				//boundary auf x und y axe
-				Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax), 
-
-				Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax)
-				);
-				
-				//rigidbody.rotation = Quaternion.Euler (0f, 0f, rigidbody.velocity.x * -tilt);  			// Anscheint gibt es probleme mit Quaternion.Euler und rigidbody2D.rotation
-				//rigidbody2D.MoveRotation(rigidbody2D.rotation + speed * Time.deltaTime); / von Unity kopiert
-				//Rigidbody2D.rotation = (Rigidbody2D.rotation + speed * Time.deltaTime); // Rotiert leider permanent 
+				(Mathf.Clamp (rigidbody2D.position.x, boundary.xMin, boundary.xMax),Mathf.Clamp (rigidbody2D.position.y, boundary.yMin, boundary.yMax));
 	}
 
 	void ApplyDamage (float damage)
 	{
 		
 		if (Health > 0) 										// is Health bigger than 0, do the following steps
-		{
-			// von health wird damage abgezogen
-			Health -= damage;								// it's possible /Health = Health - damage / but it is longer
-			
-			if (Health < 0)									// is Health lower than 0
-				Health = 0;									// than put Health to 0 
-			
-			//what happens if Health = 0?
-			if (Health == 0) 
 			{
-				// GameOver
-				RestartScene ();
+				// von health wird damage abgezogen
+				Health -= damage;								// it's possible /Health = Health - damage / but it is longer
+				
+				if (Health < 0)									// is Health lower than 0
+					Health = 0;									// than put Health to 0 
+				
+				//what happens if Health = 0?
+				if (Health == 0) 
+					{
+						// GameOver
+						RestartScene ();
+					}
 			}
-		}
 	}
+
 	void RestartScene()
 	{
 		Application.LoadLevel (Application.loadedLevel);
@@ -102,51 +94,51 @@ public class PlayerController : MonoBehaviour
 		if (Health == 5)
 			//zeige nur greenFace an
 			//entweder ich setze den Alpha auf 0 oder ich mmach das bild enable.
-		{
-			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
-			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
-			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
-			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
-			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,1);
-		}
+			{
+				yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
+				darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
+				orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+				redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+				greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,1);
+			}
 
 		if (Health == 4)
 			//zeige nur yellowFace an
-		{
-			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
-			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
-			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
-			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
-			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
-		}
+			{
+				yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
+				darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
+				orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+				redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+				greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+			}
 
 		if (Health == 3)
 			//zeige nur darkYellowFace an
-		{
-			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
-			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
-			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
-			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
-			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
-		}
+			{
+				yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
+				darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
+				orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+				redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+				greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+			}
 		if (Health == 2)
 			//zeige nur orangeFace an
-		{
-			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
-			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,0);
-			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
-			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
-			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
-		}
+			{
+				yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
+				darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,0);
+				orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
+				redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+				greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+			}
 		if (Health == 1)
 			//zeige nur redFace an
-		{
-			yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
-			darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,0);
-			orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,0);
-			redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
-			greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
-		}
+			{
+				yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,0);
+				darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,0);
+				orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,0);
+				redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
+				greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+			}
 	}
 	public float HealthFace ()
 	{

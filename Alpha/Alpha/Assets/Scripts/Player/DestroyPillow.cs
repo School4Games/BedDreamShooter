@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DestroyPillow : MonoBehaviour {
+public class DestroyPillow : MonoBehaviour 
+{
 
 	// Use this for initialization
 	void Start () 
@@ -9,13 +10,14 @@ public class DestroyPillow : MonoBehaviour {
 
 
 	}
+
 	void OnTriggerEnter2D(Collider2D col)
-	
 	{
 		if (col.gameObject.tag == "Slimer")
-		{
-			Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-
-		}
+			{
+			// gameObject an welchem das script dranhängt (pillow)
+				Destroy (this.gameObject); 
+			}
 	}
+
 }

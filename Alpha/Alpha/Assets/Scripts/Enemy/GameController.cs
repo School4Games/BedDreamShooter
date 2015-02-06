@@ -33,8 +33,6 @@ public class GameController : MonoBehaviour
 		{
 			for (int i = 0; i < enemeyCount; i++)
 			{
-
-
 				float randomvalue = Random.Range (-spawnValues.y, spawnValues.y);
 				Vector3 spawnPosition = new Vector3 (spawnValues.x, randomvalue, spawnValues.z);
 				Quaternion spawnRotation = Quaternion.identity;
@@ -43,18 +41,16 @@ public class GameController : MonoBehaviour
 				yield return new WaitForSeconds (spawnWait);
 			}
 			yield return  new WaitForSeconds (waveWait);
+
 			if (spawnWait >= spawnWait)
-			{
-				spawnWait = spawnWait -0.4f;
-				if(spawnWait < 0)
 				{
-					spawnWait = 4;
+					spawnWait = spawnWait -0.4f;
+					if(spawnWait < 0)
+						{
+							spawnWait = 4;
+						}
 				}
-			}
-			/*if (enemeyCount >= enemeyCount)
-			{
-				enemeyCount = enemeyCount + 1;
-			}*/
 		}
 	}
+
 }

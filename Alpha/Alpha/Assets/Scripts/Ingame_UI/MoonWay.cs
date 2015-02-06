@@ -24,17 +24,18 @@ public class MoonWay: MonoBehaviour {
 	{
 		
 		if(currentWaypoint < waypoint.Length)
-		{
-			patrol();
-		}
-		else
-		{    
-			if(loop)
 			{
-				currentWaypoint=0;
-			} 
-		}
+				patrol();
+			}
+		else
+			{    
+				if(loop)
+					{
+						currentWaypoint=0;
+					} 
+			}
 	}
+
 	// geh zum punkt x dann zum punkt y ... und so weiter
 	void  patrol ()
 	{
@@ -44,28 +45,21 @@ public class MoonWay: MonoBehaviour {
 		Vector3 moveDirection = target - transform.position;
 		
 		if(moveDirection.magnitude < 0.5f)
-		{
-			if (curTime == 0)
-				curTime = Time.time; // Pause over the Waypoint
-			if ((Time.time - curTime) >= pauseDuration)
 			{
-				currentWaypoint++;
-				curTime = 0;
+				if (curTime == 0)
+					curTime = Time.time; // Pause over the Waypoint
+				if ((Time.time - curTime) >= pauseDuration)
+					{
+						currentWaypoint++;
+						curTime = 0;
+					}
 			}
-		}
 		else
-		{        
-			//var rotation= Quaternion.LookRotation(target - transform.position);
-			//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
-			character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
-		}  
+			{        
+				//var rotation= Quaternion.LookRotation(target - transform.position);
+				//transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * dampingLook);
+				character.Move(moveDirection.normalized * patrolSpeed * Time.deltaTime);
+			}  
 	}
-
-	/*void GameOver()
-	{
-		if 
-		Application.Quit;
-	}*/
-
 
 }

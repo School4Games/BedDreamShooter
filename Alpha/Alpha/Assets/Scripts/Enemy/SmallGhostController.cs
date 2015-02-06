@@ -72,36 +72,32 @@ public class SmallGhostController : MonoBehaviour
 		
 		
 		if (!Timercheck && startTimer) 
-			
-		{
-			startTimer = false;
+			{
+				startTimer = false;
 
-			//wenn der Timer aufhört, geht der Partikeleffekt aus
-			BurnPart.particleSystem.enableEmission = false;
-			CottonPart.particleSystem.enableEmission = false;
-		}
-		
-		if (startTimer) 
-			
-		{
-			deathTimer -= Time.deltaTime;
-		}
-		if (deathTimer < 0) 
-			
-		{
-			ScoreManager.score += scoreValue;
+				//wenn der Timer aufhört, geht der Partikeleffekt aus
+				BurnPart.particleSystem.enableEmission = false;
+				CottonPart.particleSystem.enableEmission = false;
+			}
+		if (startTimer) 	
+			{
+				deathTimer -= Time.deltaTime;
+			}
+		if (deathTimer < 0)
+			{
+				ScoreManager.score += scoreValue;
 
-			//wenn der Geist durch die Taschenlampe zerstört wurde:
-			//2D Sprite ausschalten
-			myShape.enabled = false;
-			//Partikelsystem ausschalten
-			BurnPart.particleSystem.enableEmission = false;
-			CottonPart.particleSystem.enableEmission = false;
-			//Geist zerstören, nach Zeit, damit die Partikeleffekte noch zu Ende gehen
-			//Zeit entspricht etwas mehr als der Lebensdauer der Partikel
-			Destroy (this.gameObject, 2f);
+				//wenn der Geist durch die Taschenlampe zerstört wurde:
+				//2D Sprite ausschalten
+				myShape.enabled = false;
+				//Partikelsystem ausschalten
+				BurnPart.particleSystem.enableEmission = false;
+				CottonPart.particleSystem.enableEmission = false;
+				//Geist zerstören, nach Zeit, damit die Partikeleffekte noch zu Ende gehen
+				//Zeit entspricht etwas mehr als der Lebensdauer der Partikel
+				Destroy (this.gameObject, 2f);
 
-		}
+			}
 	}
 	
 	
@@ -109,17 +105,17 @@ public class SmallGhostController : MonoBehaviour
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")
-		{
-			Destroy(gameObject);
-		}
+			{
+				Destroy(gameObject);
+			}
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-		{
-			startTimer = false;
+			{
+				startTimer = false;
 
-			//Ausschalten des Partikeleffekts, wenn man mit der Taschenlampe aus dem Trigger rausgeht
-			BurnPart.particleSystem.enableEmission = false;
-			CottonPart.particleSystem.enableEmission = false;
-		}
+				//Ausschalten des Partikeleffekts, wenn man mit der Taschenlampe aus dem Trigger rausgeht
+				BurnPart.particleSystem.enableEmission = false;
+				CottonPart.particleSystem.enableEmission = false;
+			}
 	}
 	
 	void OnTriggerEnter2D(Collider2D other)
@@ -127,23 +123,16 @@ public class SmallGhostController : MonoBehaviour
 
 		//nur wenn das 2D Sprite vom Geist an ist, dann....
 		if (myShape.enabled == true) 
-		
-		{
-
+			{
 				if (other.gameObject.tag == Tag)
 					other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
-		
-				{
-						if (other.gameObject.tag == "Player") 
-					{
 				
-							Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-							Instantiate (SoundObject, transform.position, transform.rotation);
+				if (other.gameObject.tag == "Player") 
+					{
+						Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+						Instantiate (SoundObject, transform.position, transform.rotation);
 					}
-				}
-
-		}
-
+			}
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
 		{
 			startTimer = true;
@@ -151,26 +140,22 @@ public class SmallGhostController : MonoBehaviour
 			//Wenn der Timer durch die Taschenlampe aktiv ist, läuft auch das Partikelsystem
 			BurnPart.particleSystem.enableEmission = true;
 			CottonPart.particleSystem.enableEmission = true;
-			
 		}
 		
 	}
 
 	//Funktionsaufruf für die Farb- und Alphawert-Änderung (nur solange man im Trigger drin ist!)
 	void OnTriggerStay2D(Collider2D other)
-		
-		
 	{
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-		{
-			ColourChanging ();
-		}
+			{
+				ColourChanging ();
+			}
 	}
 
 	//Funktion für Farb- und Alphawert-Änderung während die Taschenlampe auf Geist zielt
 	void ColourChanging()
 	{
-		
 		//Bestimmung der bereits vergangenen Zeit, seitdem die Taschenlampe auf den Geist zielt
 		LostTime += Time.deltaTime;
 		//Farb- und Alphawert-Änderung durch LERP

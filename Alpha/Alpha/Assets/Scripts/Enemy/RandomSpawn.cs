@@ -19,18 +19,18 @@ public class RandomSpawn : MonoBehaviour
 	{
 		timer = timer -1;
 		if (timer == -6) 
-		{
-			timer = -1;
-		}
+			{
+				timer = -1;
+			}
 
 		if (timer == 0) 
-		{
-			Spawn ();
-		}
+			{
+				Spawn ();
+			}
 	}
 	void Spawn()
 	{
-
+		//spawn fuckbug
 		Instantiate(spaceThing, shotSpaw.position, shotSpaw.rotation);
 	}
 

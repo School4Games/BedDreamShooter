@@ -16,14 +16,10 @@ public class EndGameController : MonoBehaviour
 	{	
 		timeLeft -= Time.deltaTime;
 		if(timeLeft < 0)
-		{
-			Debug.Log("mann ey");
-			//Application.LoadLevel (Application.loadedLevel);
-			//Application.Quit();
-			//Application.CancelQuit();
-			Application.LoadLevel("MENU UNITY");
-			
-		}
-
+			{
+				Debug.Log("mann ey");
+				Application.LoadLevel("MENU UNITY");
+			}
 	}
+
 }

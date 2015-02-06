@@ -3,18 +3,15 @@ using System.Collections;
 
 public class Projectile_Enemy : MonoBehaviour 
 {			
-	/* Aktuelle Eigenschafften :
-								Speed,
-								Zerstört sich selbst wenn es Boundary verlässt,
-								sendet damage an player */
+
 																					 
 	public float Speed;																 
 	public float damageValue = 1;
 	public string Tag; 
 	public float deathTimer;
-	public bool startTimer;
+	private bool startTimer;
 	public GameObject SoundObject;
-	public bool Timercheck;
+	private bool Timercheck;
 
 	// Use this for initialization
 	void Start () 
@@ -38,18 +35,19 @@ public class Projectile_Enemy : MonoBehaviour
 		transform.position = new Vector2 (transform.position.x - translation, transform.position.y);
 		
 		if (!Timercheck && startTimer)
-		{
-			startTimer = false;
-		}
+			{
+				startTimer = false;
+			}
 		
 		if (startTimer) 
-		{
-			deathTimer -= Time.deltaTime;
-		}
+			{
+				deathTimer -= Time.deltaTime;
+			}
+
 		if (deathTimer < 0)
-		{
-			Destroy(this.gameObject);
-		}
+			{
+				Destroy(this.gameObject);
+			}
 	}
 
 
@@ -57,13 +55,13 @@ public class Projectile_Enemy : MonoBehaviour
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")
-		{
-			Destroy(gameObject);
-		}
+			{
+				Destroy(gameObject);
+			}
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-		{
-			startTimer = false;
-		}
+			{
+				startTimer = false;
+			}
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -71,21 +69,19 @@ public class Projectile_Enemy : MonoBehaviour
 		if (other.gameObject.tag == Tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 			
-		{
-			if (other.gameObject.tag == "Player")
+		if (other.gameObject.tag == "Player")
 			{
-			
 				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 				Instantiate(SoundObject, transform.position, transform.rotation);
 			}
-		}
-		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-		{
-			startTimer = true;
 			
-		}
-	
+
+		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
+			{
+				startTimer = true;
+			}
 	}
+
 }
 
 

@@ -53,49 +53,49 @@ public class hide_unhide : MonoBehaviour
 		energyBar.value = currentEnergy;
 		
 		if(useLight)
-		{
-			
-			if (Input.GetKey (onKey))
 			{
 				
-				this.renderer.enabled = true;
-				
-				currentEnergy -= reachargerate * Time.deltaTime;
-				falshlightCheck = true;
-				
+				if (Input.GetKey (onKey))
+					{
+						
+						this.renderer.enabled = true;
+						
+						currentEnergy -= reachargerate * Time.deltaTime;
+						falshlightCheck = true;
+						
+					}
+				else
+					{
+						this.renderer.enabled = false;
+						falshlightCheck = false;
+						Reacharge();
+					}
 			}
-			else
+		
+		if(currentEnergy >= maxEnergy)
 			{
+				currentEnergy = maxEnergy; 
+			}
+		if(currentEnergy <= 0)
+			{
+				currentEnergy = 0;
+				useLight = false;
 				this.renderer.enabled = false;
+			}
+		if (currentEnergy == 0)
+			{
+				energyEmphty = true;
+			}
+		if (energyEmphty && minLoader >= currentEnergy)
+			{
 				falshlightCheck = false;
 				Reacharge();
 			}
-		}
-		
-		if(currentEnergy >= maxEnergy)
-		{
-			currentEnergy = maxEnergy; 
-		}
-		if(currentEnergy <= 0)
-		{
-			currentEnergy = 0;
-			useLight = false;
-			this.renderer.enabled = false;
-		}
-		if (currentEnergy == 0)
-		{
-			energyEmphty = true;
-		}
-		if (energyEmphty && minLoader >= currentEnergy)
-		{
-			falshlightCheck = false;
-			Reacharge();
-		}
 		if(currentEnergy >= minLoader)
-		{
-			energyEmphty = false;
-			useLight = true;
-		}
+			{
+				energyEmphty = false;
+				useLight = true;
+			}
 
 	}
 

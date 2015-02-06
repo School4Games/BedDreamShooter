@@ -18,21 +18,20 @@ public class SlimerShot : MonoBehaviour
 	void Update () 
 	{
 		if(Timer <= 0)
-		{
-			Fire ();
-			Timer = ResetTimer;
-		}
+			{
+				Fire ();
+				Timer = ResetTimer;
+			}
 		else
-		{
-			Timer -= Time.deltaTime;
-		}
+			{
+				Timer -= Time.deltaTime;
+			}
 
 	}
 	void Fire()
 	{
 		Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
 	}
-	
 
 }
 

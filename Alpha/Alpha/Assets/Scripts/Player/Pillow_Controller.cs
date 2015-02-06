@@ -17,7 +17,7 @@ public class Pillow_Controller : MonoBehaviour {
 	}
 
 		//Kissen Routiert *hoffentlich*
-	void Update()
+	void FixedUpdate()
 	{
 		rigidbody2D.MoveRotation (rigidbody2D.rotation + rotationSpeed * Time.deltaTime);
 	}
@@ -26,24 +26,22 @@ public class Pillow_Controller : MonoBehaviour {
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")
-		{
-			Destroy(gameObject);
-		}
+			{
+				Destroy(gameObject);
+			}
 	}
 
 		// Pillow wird zerstört wenn es Slimer trifft
-	void OnTriggerEnter2D(Collider2D col)
-		
+	void OnTriggerEnter2D(Collider2D col)	
 	{
 		if (col.gameObject.tag == "Slimer")
-		{
-			Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+			{
+				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 
-			//Versuch ein Partikelsystem zum laufen zu bringen (INGE)
-			Instantiate(shotParticle, transform.position, transform.rotation );
-			
-		}
-
+				//Versuch ein Partikelsystem zum laufen zu bringen (INGE)
+				Instantiate(shotParticle, transform.position, transform.rotation );
+				
+			}
 		if (col.gameObject.tag == Tag)
 			col.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
 	}

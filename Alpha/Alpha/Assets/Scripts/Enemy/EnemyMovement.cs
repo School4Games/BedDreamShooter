@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyMovement : MonoBehaviour {
+public class EnemyMovement : MonoBehaviour 
+{
 	
 	public float Speed;
 	public Vector2 movementDirection = new Vector2(-1,0);
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		
 	}
 	

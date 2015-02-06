@@ -11,7 +11,7 @@ public class Mover : MonoBehaviour
 		rigidbody2D.velocity = transform.right * speed;
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
 		rigidbody2D.MoveRotation (rigidbody2D.rotation + rSpeed * Time.deltaTime);
 	}
