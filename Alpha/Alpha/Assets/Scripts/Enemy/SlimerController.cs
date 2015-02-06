@@ -8,7 +8,9 @@ public class SlimerController : MonoBehaviour
 	public float AngrySpeed;
 	public Vector2 movementDirection = new Vector2(-1,0);
 
-	private float LostTime = 2f;
+
+	public float duration;
+	public float smoothness;
 	public Color ColorOne;
 	public Color ColorTwo;
 	public GameObject PartGreen;
@@ -72,6 +74,7 @@ public class SlimerController : MonoBehaviour
 				transform.Translate (distance);
 			}
 
+
 	IEnumerator Fire()
 	{
 
@@ -81,7 +84,7 @@ public class SlimerController : MonoBehaviour
 				
 				if (Health == 1)
 				{
-						yield return new WaitForSeconds (5);
+						yield return new WaitForSeconds (2);
 						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				}
 
@@ -124,10 +127,11 @@ public class SlimerController : MonoBehaviour
 
 				if (Health == 1)
 		
-				ColourChanging ();
+				StartCoroutine ("ColourChangingAngry");
 				DeactivateParticle();
+				Speed = Speed + AngrySpeed;
 				StartCoroutine("DoubleShot");
-				Speed = AngrySpeed;
+				
 
 				
 				
@@ -157,6 +161,13 @@ public class SlimerController : MonoBehaviour
 						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 						yield return new WaitForSeconds (0.5f);
 						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+						yield return new WaitForSeconds (1.5f);
+						Speed = Speed - AngrySpeed;
+						ActivateParticle();
+						yield return new WaitForSeconds (0.5f);
+						StartCoroutine ("ColourChangingNormal");
+					
+						
 				}
 		}
 
@@ -167,16 +178,51 @@ public class SlimerController : MonoBehaviour
 	}
 
 
-	void ColourChanging()
+	void ActivateParticle ()
 	{
+		PartGreen.SetActive(true);
+		PartRed.SetActive (false);
+	}
+
+
+	IEnumerator ColourChangingAngry()
+	{
+		float progress = 0;
+		float increment = smoothness/duration;
 		
-		//Bestimmung der bereits vergangenen Zeit, seitdem die Taschenlampe auf den Geist zielt
-		float Time1 = Time.deltaTime;
-		float Time2 = Time.deltaTime + LostTime;
-		//Farb- und Alphawert-Änderung durch LERP
-		this.gameObject.renderer.material.color = Color.Lerp (ColorOne, ColorTwo, Time2/Time1);
+		
+		while(progress < 1)
+		{
+			this.gameObject.renderer.material.color = Color.Lerp (ColorOne, ColorTwo, progress);
+			progress += increment;
+			yield return new WaitForSeconds(smoothness);
+		}
+		
+		yield return true;
 		
 	}
+
+
+
+
+	IEnumerator ColourChangingNormal()
+	{
+		float progress = 0;
+		float increment = smoothness/duration;
+
+
+		while(progress < 1)
+		{
+			this.gameObject.renderer.material.color = Color.Lerp (ColorTwo, ColorOne, progress);
+			progress += increment;
+			yield return new WaitForSeconds(smoothness);
+		}
+			
+		yield return true;
+
+	}
+
+
 
 		//ZeroHealth = Death
 	void DestroyEnemy()
