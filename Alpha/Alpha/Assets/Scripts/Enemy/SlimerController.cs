@@ -15,6 +15,9 @@ public class SlimerController : MonoBehaviour
 	public Color ColorTwo;
 	public GameObject PartGreen;
 	public GameObject PartRed;
+	public GameObject PartHit;
+	public AudioClip HitSound;
+	//private bool AngryState;
 
 	//WayPoints
 	public int damageValue = 1;
@@ -32,6 +35,7 @@ public class SlimerController : MonoBehaviour
 	void Start () 
 	{
 		ResetTimer = Timer;
+		//AngryState = false;
 	}
 	
 	// Update is called once per frame
@@ -54,6 +58,7 @@ public class SlimerController : MonoBehaviour
 	public void Move()
 	
 	{
+	
 		float translation = Speed*Time.deltaTime;
 		
 		//MoveOn(new Vector2(-translation,0));
@@ -70,9 +75,10 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator Fire()
 	{
-
+	
 		if (Health > 1) 
 			{
+
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 			} 
 		
@@ -97,28 +103,39 @@ public class SlimerController : MonoBehaviour
 	{
 		if (other.gameObject.tag == Tag)
 			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
-			
+						
 		if (other.gameObject.tag == "Player")
 			{
 				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 			}
 	}
+
+/*	void HitSound ()
+	{
+		if damageValue > 0;
+			{
+			audio.PlayOneShot (HitSound, 1.0F);
+			{
+	}
+*/
 	
 		//HealtController
 	void ApplyDamage (float damage)
 	{
+
+
 		// is Health bigger than 0, do the following steps
 		if (Health > 0) 										
 			{
 				// von health wird damage abgezogen
 				Health -= damage;								// it's also possible /Health = Health - damage / but it is longer
-
-				if (Health == 1)
-		
+				
+				audio.PlayOneShot (HitSound, 1.0F);
 				StartCoroutine ("ColourChangingAngry");
 				DeactivateParticle();
 				Speed = Speed + AngrySpeed;
 				StartCoroutine("DoubleShot");
+					
 				
 				// is Health lower than 0
 				if (Health < 0)	
@@ -138,8 +155,11 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator DoubleShot()
 	{
-		if (Health == 1) 
-			{
+		//if (Health == 1) 
+		//	{
+				
+				PartHit.SetActive (false);
+				HitParticle ();
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				yield return new WaitForSeconds (0.5f);
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
@@ -147,9 +167,17 @@ public class SlimerController : MonoBehaviour
 				Speed = Speed - AngrySpeed;
 				ActivateParticle();
 				yield return new WaitForSeconds (0.5f);
-				StartCoroutine ("ColourChangingNormal");		
-			}
+				StartCoroutine ("ColourChangingNormal");	
+				
+		//	}
 	}
+
+
+	void HitParticle ()
+	{
+		PartHit.SetActive (true);
+	}
+
 
 	void DeactivateParticle ()
 	{
@@ -176,9 +204,8 @@ public class SlimerController : MonoBehaviour
 				progress += increment;
 				yield return new WaitForSeconds(smoothness);
 			}
-		
 		yield return true;
-		
+
 	}
 
 	IEnumerator ColourChangingNormal()

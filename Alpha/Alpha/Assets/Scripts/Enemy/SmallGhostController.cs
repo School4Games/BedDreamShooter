@@ -33,12 +33,10 @@ public class SmallGhostController : MonoBehaviour
 	// Use this for initialization
 
 	void Start () 
-	
 	{
 		Finder ();
 		//Komponente vom 2D Sprite
 		myShape = GetComponent<SpriteRenderer> ();
-	
 	}
 
 	void Update()
@@ -65,6 +63,8 @@ public class SmallGhostController : MonoBehaviour
 		transform.position += movementDir * speed;
 
 	}
+
+
 	void Death()
 	{
 		//
@@ -100,7 +100,6 @@ public class SmallGhostController : MonoBehaviour
 			}
 	}
 	
-	
 	//Destroy Object when leaving Boundary
 	void OnTriggerExit2D(Collider2D other)
 	{
@@ -134,13 +133,13 @@ public class SmallGhostController : MonoBehaviour
 					}
 			}
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
-		{
-			startTimer = true;
+			{
+				startTimer = true;
 
-			//Wenn der Timer durch die Taschenlampe aktiv ist, läuft auch das Partikelsystem
-			BurnPart.particleSystem.enableEmission = true;
-			CottonPart.particleSystem.enableEmission = true;
-		}
+				//Wenn der Timer durch die Taschenlampe aktiv ist, läuft auch das Partikelsystem
+				BurnPart.particleSystem.enableEmission = true;
+				CottonPart.particleSystem.enableEmission = true;
+			}
 		
 	}
 
