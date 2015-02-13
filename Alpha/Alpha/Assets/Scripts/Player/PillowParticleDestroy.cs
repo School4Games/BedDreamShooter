@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ParticleDestroy : MonoBehaviour {
+public class PillowParticleDestroy : MonoBehaviour {
 
 	private int delay = 2;
 

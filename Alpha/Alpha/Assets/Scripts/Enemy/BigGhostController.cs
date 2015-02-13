@@ -11,6 +11,7 @@ public class BigGhostController : MonoBehaviour
 	public float deathTimer;
 	private bool startTimer;
 	private bool Timercheck;
+	private bool NewTimer;
 	public int scoreValue;
 	public int damageValue = 1;
 	public string Tag;
@@ -39,6 +40,9 @@ public class BigGhostController : MonoBehaviour
 	public GameObject smalGhosts;
 	public GameObject Spawn1;
 	public GameObject Spawn2;
+
+	//Sounds
+	public AudioSource FlashlightHit;
 
 	//private Enemy_Controller character; 
 
@@ -69,6 +73,8 @@ public class BigGhostController : MonoBehaviour
 		Move ();
 		GhostDeath();
 	}
+
+
 	void gettarget()
 	{	
 		if (Timer <= 10) 
@@ -85,38 +91,28 @@ public class BigGhostController : MonoBehaviour
 			Wcounter++;
 
 			//nur wenn das 2D Sprite vom Geist an ist, dann....
-			if (myShape.enabled == true) 
-			{
-
+			//if (myShape.enabled == true) 
+			//{
 				StartCoroutine("SmallGhosts");
-			}
-				//Instantiate (smalGhosts, Spawn1.transform.position, Quaternion.identity);
-				//Instantiate (smalGhosts, Spawn2.transform.position, Quaternion.identity);
-
-
-
-
-
+			//}
 		}
 
 	}
 
 
 	IEnumerator SmallGhosts()
-
 	{
-
 		yield return new WaitForSeconds (Timer/2);
-		if (myShape.enabled == true) {
-						Instantiate (smalGhosts, Spawn1.transform.position, Quaternion.identity);
-						Instantiate (smalGhosts, Spawn2.transform.position, Quaternion.identity);
-				}
+		if (myShape.enabled == true) 
+		{
+			Instantiate (smalGhosts, Spawn1.transform.position, Quaternion.identity);
+			Instantiate (smalGhosts, Spawn2.transform.position, Quaternion.identity);
 		}
+	}
 
 
 	void  patrol (Vector3 target)
 	{
-		
 		// Keep waypoint at character's height
 		target.z = transform.position.z; 
 		Vector3 moveDirection = target - transform.position;
@@ -132,21 +128,24 @@ public class BigGhostController : MonoBehaviour
 				curTime = 0;
 			}
 		}
+
 		else if(Timer <0)
 			{ 
-				
 				MoveOn(moveDirection.normalized * patrolSpeed * Time.deltaTime);
-			}		
+			}	
+
 		if(Vector3.Distance(this.transform.position,target) < 0.5f)
 			{
 				Targetreached = true;
 			}
+
 		else
 			{
 				Targetreached = false;
 			}
 	}
-	
+
+
 	void Spawn (GameObject Points)
 	{
 		// Waypoints spawnen random auf der Y-Achse, aber in dem vorgegebenen Bereich
@@ -169,9 +168,9 @@ public class BigGhostController : MonoBehaviour
 		Destroy(W3,30.0f);
 	}
 
+
 	void GhostDeath ()
 	{
-		
 		Timercheck = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().falshlightCheck;
 		
 		if (!Timercheck && startTimer) 
@@ -181,12 +180,14 @@ public class BigGhostController : MonoBehaviour
 				//wenn der Timer aufhört, geht der Partikeleffekt aus
 				BurnPart.particleSystem.enableEmission = false;
 				CottonPart.particleSystem.enableEmission = false;
+				FlashlightHit.audio.enabled = false;
 			}
 		
 		if (startTimer) 	
 			{
 				deathTimer -= Time.deltaTime;
 			}
+	
 		if (deathTimer < 0) 	
 			{
 				//überschreibt des aktuellen Scores um den betrag des Scores + den scoreValue des Ghosts
@@ -199,25 +200,28 @@ public class BigGhostController : MonoBehaviour
 				//Partikelsystem ausschalten
 				BurnPart.particleSystem.enableEmission = false;
 				CottonPart.particleSystem.enableEmission = false;
+				FlashlightHit.audio.enabled = false;
+		
 				//Geist zerstören, nach Zeit, damit die Partikeleffekte noch zu Ende gehen
 				//Zeit entspricht etwas mehr als der Lebensdauer der Partikel
 				Destroy (this.gameObject, 2f);
 			}
 	}
-	
+
+
 	public void Move()	
 	{
 		float translation = Speed*Time.deltaTime;
-		
 		MoveOn (movementDirection * translation);
 	}
-	
+
+
 	public void MoveOn(Vector2 distance)
-		//Debug.Log("hakunamatata");
 	{
 		transform.Translate (distance);
 	}
-	
+
+
 	void OnTriggerExit2D(Collider2D other)
 	{
 		if (other.gameObject.tag == "Boundary")
@@ -232,9 +236,11 @@ public class BigGhostController : MonoBehaviour
 				//Ausschalten des Partikeleffekts, wenn man mit der Taschenlampe aus dem Trigger rausgeht
 				BurnPart.particleSystem.enableEmission = false;
 				CottonPart.particleSystem.enableEmission = false;
+				FlashlightHit.audio.enabled = false;
 			}
 	}
-	
+
+
 	//SendDamage to Player
 	void OnTriggerEnter2D(Collider2D other)
 	{
@@ -248,28 +254,54 @@ public class BigGhostController : MonoBehaviour
 						if (other.gameObject.tag == "Player") 
 							{
 								Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+								FlashlightHit.audio.enabled = false;
 							}
 					}
-			}
+
 
 		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
 			{
 				startTimer = true;
 
 				//Wenn der Timer durch die Taschenlampe aktiv ist, läuft auch das Partikelsystem
-				BurnPart.particleSystem.enableEmission = true;
+				/*BurnPart.particleSystem.enableEmission = true;
 				CottonPart.particleSystem.enableEmission = true;
-			}
+				FlashlightHit.audio.enabled = true;
+
+			*/}
+		}
 	}
+
 
 	//Funktionsaufruf für die Farb- und Alphawert-Änderung (nur solange man im Trigger drin ist!)
 	void OnTriggerStay2D(Collider2D other)
-		
 	{
-		if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
+		NewTimer = GameObject.FindGameObjectWithTag ("Light").GetComponent<hide_unhide> ().useLight;
+
+		if (NewTimer == true)
+		
 			{
-				ColourChanging (); 
+			if (other.gameObject.tag == "Light" && this.gameObject.tag == "BGhost") 
+
+			{
+			//	Debug.Log("True");
+				startTimer = true;
+				ColourChanging ();
+				BurnPart.particleSystem.enableEmission = true;
+				CottonPart.particleSystem.enableEmission = true;
+				FlashlightHit.audio.enabled = true;
+			
 			}
+
+			}
+		if (NewTimer == false)
+		{
+			startTimer = false;
+			BurnPart.particleSystem.enableEmission = false;
+			CottonPart.particleSystem.enableEmission = false;
+			FlashlightHit.audio.enabled = false;
+		}
+
 	}
 
 
@@ -280,7 +312,7 @@ public class BigGhostController : MonoBehaviour
 		LostTime += Time.deltaTime;
 		//Farb- und Alphawert-Änderung durch LERP
 		this.gameObject.renderer.material.color = Color.Lerp (ColorOne, ColorTwo, (LostTime)/deathTimer*0.05f);
-		
+
 	}
 
 }

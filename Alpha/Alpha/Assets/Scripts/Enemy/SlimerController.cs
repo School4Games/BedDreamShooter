@@ -13,11 +13,20 @@ public class SlimerController : MonoBehaviour
 	public float smoothness;
 	public Color ColorOne;
 	public Color ColorTwo;
+	private SpriteRenderer myShape;
+	//private bool AngryState;
+
+
+	//Particle
 	public GameObject PartGreen;
 	public GameObject PartRed;
 	public GameObject PartHit;
-	public AudioClip HitSound;
-	//private bool AngryState;
+	public GameObject PartDeath;
+
+	//Sound
+	public AudioClip[] HitSounds;
+	//public AudioClip HitSound;
+	public AudioClip DeathSound;
 
 	//WayPoints
 	public int damageValue = 1;
@@ -34,10 +43,13 @@ public class SlimerController : MonoBehaviour
 
 	void Start () 
 	{
+		//2D-Sprite-Componente aufrufen
+		myShape = GetComponent<SpriteRenderer> ();
 		ResetTimer = Timer;
 		//AngryState = false;
 	}
-	
+
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -46,28 +58,24 @@ public class SlimerController : MonoBehaviour
 				StartCoroutine("Fire");
 				Timer = ResetTimer;
 			} 
+
 		else 
 			{
 				Timer -= Time.deltaTime;
 			}
 									
 		Move ();
-
 	}
 
+
 	public void Move()
-	
 	{
-	
 		float translation = Speed*Time.deltaTime;
-		
-		//MoveOn(new Vector2(-translation,0));
-		
 		MoveOn (movementDirection * translation);
 	}
 
+
 	public void MoveOn(Vector2 distance)
-	//Debug.Log("hakunamatata");
 	{
 		transform.Translate (distance);
 	}
@@ -75,19 +83,24 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator Fire()
 	{
-	
-		if (Health > 1) 
+		if (myShape.enabled == true)
 			{
-
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-			} 
+				if (Health > 1) 
+					{
+						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+					} 
 		
-		if (Health == 1)
-			{
-				yield return new WaitForSeconds (2);
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+				if (Health == 1)
+					{
+						yield return new WaitForSeconds (2);
+						if (myShape.enabled == true)
+							{
+								Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+							}
+					}
 			}
 	}
+
 
 	void OnTriggerExit2D(Collider2D other)
 	{
@@ -98,78 +111,91 @@ public class SlimerController : MonoBehaviour
 
 	}
 
-		//SendDamage to Player
+
+	//SendDamage to Player
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.tag == Tag)
-			other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
-						
-		if (other.gameObject.tag == "Player")
+		if (myShape.enabled == true)
 			{
-				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-			}
+				if (other.gameObject.tag == Tag)
+						other.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
+						
+				if (other.gameObject.tag == "Player")
+					{
+						Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+					}
+			}	
 	}
 
-/*	void HitSound ()
-	{
-		if damageValue > 0;
-			{
-			audio.PlayOneShot (HitSound, 1.0F);
-			{
-	}
-*/
-	
-		//HealtController
+
+	//HealtController
 	void ApplyDamage (float damage)
 	{
-
-
-		// is Health bigger than 0, do the following steps
-		if (Health > 0) 										
+		if (myShape.enabled == true)
 			{
-				// von health wird damage abgezogen
-				Health -= damage;								// it's also possible /Health = Health - damage / but it is longer
-				
-				audio.PlayOneShot (HitSound, 1.0F);
-				StartCoroutine ("ColourChangingAngry");
-				DeactivateParticle();
-				Speed = Speed + AngrySpeed;
-				StartCoroutine("DoubleShot");
-					
-				
-				// is Health lower than 0
-				if (Health < 0)	
-				// than put Health to 0 
-					Health = 0;
-				
-				//what happens if Health = 0?
-				if (Health == 0) 
+				if (Health > 1)
 					{
-						ScoreManager.score += scoreValue;
-							// Enemy Death
-							DestroyEnemy();
+						audio.clip = HitSounds[Random.Range(0, HitSounds.Length)];
+						audio.Play();
 					}
-			} 
+				// is Health bigger than 0, do the following steps
+				if (Health > 0) 										
+					{
+						// von health wird damage abgezogen
+						Health -= damage;								// it's also possible /Health = Health - damage / but it is longer
+						StartCoroutine ("ColourChangingAngry");
+						DeactivateParticle();
+						Speed = Speed + AngrySpeed;
+						StartCoroutine("DoubleShot");
+						// is Health lower than 0
+
+							if (Health < 0)	
+								// than put Health to 0 
+								Health = 0;
+								//what happens if Health = 0?
+
+									if (Health == 0) 
+										{
+											ScoreManager.score += scoreValue;
+											// Enemy Death
+											myShape.enabled = false;
+											gameObject.GetComponent<BoxCollider2D>().enabled = false;
+											DestroyEnemy();
+										}
+					} 
+			}
 	}
 
 
 	IEnumerator DoubleShot()
 	{
-		//if (Health == 1) 
-		//	{
-				
+		if (myShape.enabled == true)
+			{
 				PartHit.SetActive (false);
 				HitParticle ();
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				yield return new WaitForSeconds (0.5f);
-				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-				yield return new WaitForSeconds (1.5f);
-				Speed = Speed - AngrySpeed;
-				ActivateParticle();
-				yield return new WaitForSeconds (0.5f);
-				StartCoroutine ("ColourChangingNormal");	
-				
-		//	}
+					
+					if (myShape.enabled == true)
+						{
+							Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+						}
+
+					yield return new WaitForSeconds (1.5f);
+						
+					if (myShape.enabled == true)
+						{
+							Speed = Speed - AngrySpeed;
+							ActivateParticle();
+						}
+
+					yield return new WaitForSeconds (0.5f);
+						
+					if (myShape.enabled == true)
+						{
+							StartCoroutine ("ColourChangingNormal");	
+						}	
+			}
 	}
 
 
@@ -205,14 +231,13 @@ public class SlimerController : MonoBehaviour
 				yield return new WaitForSeconds(smoothness);
 			}
 		yield return true;
-
 	}
+
 
 	IEnumerator ColourChangingNormal()
 	{
 		float progress = 0;
 		float increment = smoothness/duration;
-
 
 		while(progress < 1)
 			{
@@ -225,10 +250,15 @@ public class SlimerController : MonoBehaviour
 
 	}
 
-		//ZeroHealth = Death
+
+	//ZeroHealth = Death
 	void DestroyEnemy()
 	{
-		
-		Destroy(this.gameObject); // gameObject an welchem das script dranhängt // wird aber erst ausgeführt, wenn health = 0
+		PartDeath.SetActive (true);
+		PartGreen.SetActive(false);
+		PartRed.SetActive (false);
+		PartHit.SetActive (false);
+		audio.PlayOneShot (DeathSound, 1.0F);
+		Destroy(this.gameObject, 2f);; // gameObject an welchem das script dranhängt // wird aber erst ausgeführt, wenn health = 0
 	}
 }

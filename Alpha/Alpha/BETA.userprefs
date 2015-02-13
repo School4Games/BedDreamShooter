@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\BigGhostController.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Enemy\SlimerController.cs" Line="155" Column="42" />
+      <File FileName="Assets\Scripts\Enemy\BigGhostController.cs" Line="257" Column="9" />
+      <File FileName="Assets\Scripts\Player\Pillow_Controller.cs" Line="39" Column="71" />
+      <File FileName="Assets\Scripts\Player\PillowParticleDestroy.cs" Line="20" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

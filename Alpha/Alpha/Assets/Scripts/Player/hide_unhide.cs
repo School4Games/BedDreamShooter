@@ -13,13 +13,13 @@ public class hide_unhide : MonoBehaviour
 	// die regenerations geschwindigkeit der Energy
 	public float reachargerate;
 	// überprüfung ob Licht an oder aus ist
-	private bool useLight;
+	public bool useLight;
 	// wenn energy = 0, dann muss erst wieder bis zum minLoader geladen werden bis die Taschenlampe wieder angeht
 	public float minLoader;
 	//überprüfung des MinLoaders
 	public float reload;
 	//Reload-Rate der FL
-	private bool energyEmphty;
+	public bool energyEmphty;
 	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
 	public AudioClip FLSound;
@@ -57,12 +57,12 @@ public class hide_unhide : MonoBehaviour
 				
 				if (Input.GetKey (onKey))
 					{
-						
-						this.renderer.enabled = true;
-						
-						currentEnergy -= reachargerate * Time.deltaTime;
-						falshlightCheck = true;
-						
+					
+							
+								this.renderer.enabled = true;
+								falshlightCheck = true;
+								currentEnergy -= reachargerate * Time.deltaTime;
+								
 					}
 				else
 					{
@@ -95,6 +95,7 @@ public class hide_unhide : MonoBehaviour
 			{
 				energyEmphty = false;
 				useLight = true;
+			 
 			}
 
 	}

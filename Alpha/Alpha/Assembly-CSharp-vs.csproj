@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\Enemy\SlimerController.cs" />
      <Compile Include="Assets\Scripts\Enemy\SlimerShot.cs" />
      <Compile Include="Assets\Scripts\Enemy\SmallGhostController.cs" />
+     <Compile Include="Assets\Scripts\Enemy\SoundController.cs" />
      <Compile Include="Assets\Scripts\HighscoreBoard.cs" />
      <Compile Include="Assets\Scripts\Ingame_UI\DestroyByBoundary.cs" />
      <Compile Include="Assets\Scripts\Ingame_UI\EndGameController.cs" />
@@ -67,10 +68,10 @@
      <Compile Include="Assets\Scripts\Ingame_UI\inGamePause.cs" />
      <Compile Include="Assets\Scripts\Ingame_UI\scrollingScript.cs" />
      <Compile Include="Assets\Scripts\MaxScripts\WayPointMovement.cs" />
-     <Compile Include="Assets\Scripts\ParticleDestroy.cs" />
      <Compile Include="Assets\Scripts\Player\DestroyPillow.cs" />
      <Compile Include="Assets\Scripts\Player\HealthController.cs" />
      <Compile Include="Assets\Scripts\Player\Mover.cs" />
+     <Compile Include="Assets\Scripts\Player\PillowParticleDestroy.cs" />
      <Compile Include="Assets\Scripts\Player\Pillow_Controller.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Player\hide_unhide.cs" />
@@ -78,7 +79,6 @@
      <Compile Include="Assets\Scripts\Scripts\MainMenuControler.cs" />
      <Compile Include="Assets\Scripts\Scripts\MousePointer.cs" />
      <Compile Include="Assets\Scripts\Scripts\NewBehaviourScript.cs" />
-     <Compile Include="Assets\Scripts\SoundController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

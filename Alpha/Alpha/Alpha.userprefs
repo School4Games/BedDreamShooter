@@ -1,8 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="..\..\..\Backup_Project\Alpha\Assets\Scripts\Enemy\SlimerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Enemy\BigGhostController.cs">
     <Files>
-      <File FileName="..\..\..\Backup_Project\Alpha\Assets\Scripts\Enemy\SlimerController.cs" Line="183" Column="6" />
+      <File FileName="Assets\Scripts\Enemy\BigGhostController.cs" Line="29" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
