@@ -16,6 +16,14 @@ public class PlayerController : MonoBehaviour
 	//
 	public Boundary boundary;
 
+	//Feedback for been hit
+	private Material mat;
+	//private Color[] colors = {Color.yellow, Color.red};
+	public Color[] colors;
+	private float flashSpeed = 0.1f;
+	private float lengthOfTimeToFlash = 0.5f;
+
+
 	//Shot
 	public GameObject shot;
 	public Transform shotSpawn;
@@ -33,7 +41,7 @@ public class PlayerController : MonoBehaviour
 	
 	void Start()
 	{
-	
+		this.mat = GetComponent<SpriteRenderer>().material;
 	}
 	
 	void Update ()
@@ -50,7 +58,8 @@ public class PlayerController : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		UIHealth ();
+		UIHealth();
+		//StartCoroutine("UIHealth");
 				//zuweisung der keys w,a,s,d || Arrowkeys & velocity
 
 				float moveHorizontal = Input.GetAxis ("Horizontal");
@@ -66,12 +75,13 @@ public class PlayerController : MonoBehaviour
 
 	void ApplyDamage (float damage)
 	{
-		
+		StartCoroutine(Flash(this.lengthOfTimeToFlash, this.flashSpeed));
 		if (Health > 0) 										// is Health bigger than 0, do the following steps
 			{
 				// von health wird damage abgezogen
 				Health -= damage;								// it's possible /Health = Health - damage / but it is longer
 				
+
 				if (Health < 0)									// is Health lower than 0
 					Health = 0;									// than put Health to 0 
 				
@@ -89,7 +99,27 @@ public class PlayerController : MonoBehaviour
 		Application.LoadLevel (Application.loadedLevel);
 	}
 
-	void UIHealth ()
+
+	IEnumerator Flash(float time, float intervalTime)
+	{
+		float elapsedTime 	= 0f;
+		int index			= 0;
+		gameObject.GetComponent<BoxCollider2D>().enabled = false;
+		while (elapsedTime < time)
+		{
+			mat.color = colors[index % 2];
+			elapsedTime += Time.deltaTime;
+			index++;
+			yield return new WaitForSeconds(intervalTime);
+		}
+		//Debug.Log("Fertig");
+		mat.color = colors[0];
+		gameObject.GetComponent<BoxCollider2D>().enabled = true;
+	}
+
+
+
+	void UIHealth()
 	{
 		if (Health == 5)
 			//zeige nur greenFace an
@@ -105,11 +135,15 @@ public class PlayerController : MonoBehaviour
 		if (Health == 4)
 			//zeige nur yellowFace an
 			{
+				
+
 				yellowFace.color = new Color(yellowFace.color.r,yellowFace.color.g,yellowFace.color.b,1);
 				darkYellowFace.color = new Color(darkYellowFace.color.r,darkYellowFace.color.g,darkYellowFace.color.b,1);
 				orangeFace.color = new Color(orangeFace.color.r,orangeFace.color.g,orangeFace.color.b,1);
 				redFace.color = new Color(redFace.color.r,redFace.color.g,redFace.color.b,1);
 				greenFace.color = new Color(greenFace.color.r,greenFace.color.g,greenFace.color.b,0);
+		
+		
 			}
 
 		if (Health == 3)
@@ -143,6 +177,7 @@ public class PlayerController : MonoBehaviour
 	public float HealthFace ()
 	{
 		return Health;
+
 	}
 
 }

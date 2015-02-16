@@ -174,7 +174,7 @@ public class SlimerController : MonoBehaviour
 				PartHit.SetActive (false);
 				HitParticle ();
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-				yield return new WaitForSeconds (0.5f);
+				
 					
 					if (myShape.enabled == true)
 						{
