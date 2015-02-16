@@ -29,8 +29,10 @@ public class PlayerController : MonoBehaviour
 	public Transform shotSpawn;
 	public float fireRate;
 	private float nextFire;
+
 	//LifePoints
 	public float Health = 5;
+
 	// UI Face
 	public Image redFace;
 	public Image orangeFace;
@@ -38,6 +40,9 @@ public class PlayerController : MonoBehaviour
 	public Image yellowFace;
 	public Image greenFace;
 
+	//Sound
+	public AudioClip[] hitSounds;
+	//public AudioClip hitSound02;
 	
 	void Start()
 	{
@@ -76,6 +81,11 @@ public class PlayerController : MonoBehaviour
 	void ApplyDamage (float damage)
 	{
 		StartCoroutine(Flash(this.lengthOfTimeToFlash, this.flashSpeed));
+
+		audio.clip = hitSounds[Random.Range(0, hitSounds.Length)];
+		audio.Play();
+
+
 		if (Health > 0) 										// is Health bigger than 0, do the following steps
 			{
 				// von health wird damage abgezogen

@@ -43,6 +43,7 @@ public class BigGhostController : MonoBehaviour
 
 	//Sounds
 	public AudioSource FlashlightHit;
+	public AudioClip SpawnSound;
 
 	//private Enemy_Controller character; 
 
@@ -51,11 +52,10 @@ public class BigGhostController : MonoBehaviour
 	{
 		//Komponente vom 2D Sprite
 		myShape = GetComponent<SpriteRenderer> ();
-
-
 		currentWaypoints = new GameObject[3];
 		Spawn (Waypoints);
 		gettarget ();
+		PlayAudioSpawn ();
 	}
 	
 	// Update is called once per frame
@@ -74,6 +74,12 @@ public class BigGhostController : MonoBehaviour
 		GhostDeath();
 	}
 
+	void PlayAudioSpawn()
+	{
+
+		AudioSource.PlayClipAtPoint (SpawnSound, transform.position);
+	
+	}
 
 	void gettarget()
 	{	

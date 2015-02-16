@@ -87,17 +87,20 @@ public class SlimerController : MonoBehaviour
 			{
 				if (Health > 1) 
 					{
+						
+						yield return new WaitForSeconds (0.5f);
 						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+						yield return new WaitForSeconds (0.5f);
 					} 
 		
-				if (Health == 1)
+		/*		if (Health == 1)
 					{
 						yield return new WaitForSeconds (2);
 						if (myShape.enabled == true)
 							{
 								Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 							}
-					}
+					}*/
 			}
 	}
 
@@ -174,14 +177,16 @@ public class SlimerController : MonoBehaviour
 				PartHit.SetActive (false);
 				HitParticle ();
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-				
+				yield return new WaitForSeconds (0.5f);
 					
 					if (myShape.enabled == true)
 						{
+							
+							
 							Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 						}
 
-					yield return new WaitForSeconds (1.5f);
+					
 						
 					if (myShape.enabled == true)
 						{

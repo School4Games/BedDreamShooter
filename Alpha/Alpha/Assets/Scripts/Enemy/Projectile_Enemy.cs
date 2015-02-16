@@ -13,11 +13,15 @@ public class Projectile_Enemy : MonoBehaviour
 	public GameObject SoundObject;
 	private bool Timercheck;
 
+
+	private SpriteRenderer myShape; 
+	public GameObject SpitParticle;
+
 	// Use this for initialization
 	void Start () 
 	
 	{
-	
+		myShape = GetComponent<SpriteRenderer> ();
 
 	}
 	
@@ -46,7 +50,8 @@ public class Projectile_Enemy : MonoBehaviour
 
 		if (deathTimer < 0)
 			{
-				Destroy(this.gameObject);
+		
+			Destroy(this.gameObject);
 			}
 	}
 
@@ -71,8 +76,11 @@ public class Projectile_Enemy : MonoBehaviour
 			
 		if (other.gameObject.tag == "Player")
 			{
-				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+				
+				myShape.enabled = false;
+				Destroy (this.gameObject, 2F); // gameObject an welchem das script dranhängt (pillow)
 				Instantiate(SoundObject, transform.position, transform.rotation);
+				ActivateParticle();	
 			}
 			
 
@@ -81,6 +89,13 @@ public class Projectile_Enemy : MonoBehaviour
 				startTimer = true;
 			}
 	}
+
+	void ActivateParticle()
+	{
+		SpitParticle.SetActive(true);
+	}
+
+
 
 }
 
