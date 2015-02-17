@@ -39,7 +39,11 @@ public class SlimerController : MonoBehaviour
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float Timer;
+	public float DoubleshotCooldown = 1.5f; //***
+	private float DoubleshotCooldownTimer = 0; //***
 	public float ResetTimer;
+	private float progressA = 0;
+	private float progressN = 0;
 
 	void Start () 
 	{
@@ -63,7 +67,9 @@ public class SlimerController : MonoBehaviour
 			{
 				Timer -= Time.deltaTime;
 			}
-									
+
+		DoubleshotCooldownTimer -= Time.deltaTime; //***
+
 		Move ();
 	}
 
@@ -90,7 +96,8 @@ public class SlimerController : MonoBehaviour
 						
 						yield return new WaitForSeconds (0.5f);
 						Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
-						yield return new WaitForSeconds (0.5f);
+						//yield return new WaitForSeconds (0.5f);
+
 					} 
 		
 		/*		if (Health == 1)
@@ -136,20 +143,32 @@ public class SlimerController : MonoBehaviour
 	{
 		if (myShape.enabled == true)
 			{
-				if (Health > 1)
+				/*if (Health > 1)
 					{
-						audio.clip = HitSounds[Random.Range(0, HitSounds.Length)];
-						audio.Play();
-					}
+						
+					}*/
 				// is Health bigger than 0, do the following steps
 				if (Health > 0) 										
 					{
 						// von health wird damage abgezogen
+						audio.clip = HitSounds[Random.Range(0, HitSounds.Length)];
+						audio.Play();
 						Health -= damage;								// it's also possible /Health = Health - damage / but it is longer
 						StartCoroutine ("ColourChangingAngry");
 						DeactivateParticle();
 						Speed = Speed + AngrySpeed;
-						StartCoroutine("DoubleShot");
+						
+
+						float timeSinceLastShot = ResetTimer - Timer; //***
+						if ((DoubleshotCooldownTimer <= 0) 
+				    		&& (timeSinceLastShot > 1.0f)) //***
+						{ //***
+							StartCoroutine("DoubleShot");
+							Timer = ResetTimer;
+							DoubleshotCooldownTimer = DoubleshotCooldown; //***
+						} //***
+
+							StartCoroutine("ColorChangingNormal");
 						// is Health lower than 0
 
 							if (Health < 0)	
@@ -196,12 +215,14 @@ public class SlimerController : MonoBehaviour
 
 					yield return new WaitForSeconds (0.5f);
 						
-					if (myShape.enabled == true)
+					/*if (myShape.enabled == true)
 						{
 							StartCoroutine ("ColourChangingNormal");	
-						}	
+						}*/	
 			}
 	}
+
+
 
 
 	void HitParticle ()
@@ -226,13 +247,13 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator ColourChangingAngry()
 	{
-		float progress = 0;
+		//float progress = 0;
 		float increment = smoothness/duration;
 
-		while(progress < 1)
+		while(progressA < 1)
 			{
-				this.gameObject.renderer.material.color = Color.Lerp (ColorOne, ColorTwo, progress);
-				progress += increment;
+				this.gameObject.renderer.material.color = Color.Lerp (ColorOne, ColorTwo, progressA);
+				progressA += increment;
 				yield return new WaitForSeconds(smoothness);
 			}
 		yield return true;
@@ -241,13 +262,13 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator ColourChangingNormal()
 	{
-		float progress = 0;
+		//float progress = 0;
 		float increment = smoothness/duration;
 
-		while(progress < 1)
+		while(progressN < 1)
 			{
-				this.gameObject.renderer.material.color = Color.Lerp (ColorTwo, ColorOne, progress);
-				progress += increment;
+				this.gameObject.renderer.material.color = Color.Lerp (ColorTwo, ColorOne, progressN);
+				progressN += increment;
 				yield return new WaitForSeconds(smoothness);
 			}
 			
