@@ -16,6 +16,6 @@ public class MousePointer : MonoBehaviour {
 	
 	void OnGUI()
 	{
-		GUI.DrawTexture(new Rect(Input.mousePosition.x, Screen.height - Input.mousePosition.y, cursorWidth, cursorHeight), cursorImage);
+		GUI.DrawTexture(new Rect(Input.mousePosition.x - 20, Screen.height - Input.mousePosition.y -10, cursorWidth, cursorHeight), cursorImage);
 	}
 }

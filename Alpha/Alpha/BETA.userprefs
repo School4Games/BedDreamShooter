@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player\hide_unhide.cs">
+    <Files>
+      <File FileName="Assets\Scripts\Player\hide_unhide.cs" Line="99" Column="5" />
+      <File FileName="Assets\Scripts\Ingame_UI\MoonWay.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PlayerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\SlimerController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Enemy\BigGhostController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\Pillow_Controller.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player\PillowParticleDestroy.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Ingame_UI\EndGameController.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

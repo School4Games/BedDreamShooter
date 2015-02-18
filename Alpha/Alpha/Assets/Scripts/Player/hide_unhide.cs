@@ -13,22 +13,31 @@ public class hide_unhide : MonoBehaviour
 	// die regenerations geschwindigkeit der Energy
 	public float reachargerate;
 	// überprüfung ob Licht an oder aus ist
-	private bool useLight;
+	public bool useLight;
 	// wenn energy = 0, dann muss erst wieder bis zum minLoader geladen werden bis die Taschenlampe wieder angeht
 	public float minLoader;
 	//überprüfung des MinLoaders
 	public float reload;
 	//Reload-Rate der FL
-	private bool energyEmphty;
+	public bool energyEmphty;
 	// Slider bekommt den wert currentEnergy zugewiesen
 	public Slider energyBar;
 	public AudioClip FLSound;
 	public bool falshlightCheck;
 
+	//Flashlide Hide Slowly
+	public Color ColorOne;
+	public Color ColorTwo;
+	//public Color ColorThree;
+	private float LostTime = 0;
+
+
+	SpriteRenderer spriteRenderer;
+
 	// Use this for initialization
 	void Start () 
 	{
-
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		energyBar.maxValue = maxEnergy;
 	}
 
@@ -57,19 +66,45 @@ public class hide_unhide : MonoBehaviour
 				
 				if (Input.GetKey (onKey))
 					{
-						
-						this.renderer.enabled = true;
-						
-						currentEnergy -= reachargerate * Time.deltaTime;
-						falshlightCheck = true;
-						
+					
+							
+								this.renderer.enabled = true;
+								falshlightCheck = true;
+								currentEnergy -= reachargerate * Time.deltaTime;
+								
+
+
+
+
+
+
+				ColourChanging();
+
+
+
 					}
 				else
 					{
 						this.renderer.enabled = false;
 						falshlightCheck = false;
 						Reacharge();
-					}
+						LostTime = 0;
+				//LostTime = maxEnergy - currentEnergy;
+				//Debug.Log ("LostTime1:" + LostTime);
+
+
+
+
+
+
+				//this.gameObject.renderer.material.color = ColorThree;
+					
+			
+			
+
+
+			
+			}
 			}
 		
 		if(currentEnergy >= maxEnergy)
@@ -95,9 +130,35 @@ public class hide_unhide : MonoBehaviour
 			{
 				energyEmphty = false;
 				useLight = true;
+			 
 			}
 
 	}
+
+
+
+
+
+
+	void ColourChanging()
+	{
+		//Bestimmung der bereits vergangenen Zeit, seitdem die Taschenlampe an ist
+		LostTime += Time.deltaTime/currentEnergy;
+		//Debug.Log ("DeltaTime:" + Time.deltaTime);
+		//Debug.Log ("Energy:" + currentEnergy);
+		//Debug.Log ("LostTime2:" + LostTime);
+		//Farb- und Alphawert-Änderung durch LERP
+		spriteRenderer.color = Color.Lerp (ColorTwo, ColorOne, (LostTime+1)/currentEnergy);
+
+	}
+
+
+
+
+
+
+
+
 
 	void Reacharge ()
 	{

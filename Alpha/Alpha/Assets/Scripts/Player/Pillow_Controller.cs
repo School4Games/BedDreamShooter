@@ -9,10 +9,13 @@ public class Pillow_Controller : MonoBehaviour {
 	public int damageValue = 1;
 	public string Tag;
 	public GameObject shotParticle;
+	public GameObject Slimer;
+
 	
 		//Erklärt sich selbst.. wenn nicht ... Pillow bewegt sich nach rechts mit speed xy
 	void Start ()
 	{
+
 		rigidbody2D.velocity = transform.right * speed;
 	}
 
@@ -36,11 +39,10 @@ public class Pillow_Controller : MonoBehaviour {
 	{
 		if (col.gameObject.tag == "Slimer")
 			{
-				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
-
-				//Versuch ein Partikelsystem zum laufen zu bringen (INGE)
-				Instantiate(shotParticle, transform.position, transform.rotation );
-				
+					//Versuch ein Partikelsystem zum laufen zu bringen (INGE)
+					Instantiate(shotParticle, transform.position, transform.rotation );	
+					Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+							
 			}
 		if (col.gameObject.tag == Tag)
 			col.gameObject.SendMessage ("ApplyDamage", damageValue, SendMessageOptions.DontRequireReceiver);
