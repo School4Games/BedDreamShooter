@@ -31,6 +31,9 @@ public class hide_unhide : MonoBehaviour
 	//public Color ColorThree;
 	private float LostTime = 0;
 
+	public bool Check; 
+	public bool eplscheck;
+
 
 	SpriteRenderer spriteRenderer;
 
@@ -46,6 +49,7 @@ public class hide_unhide : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		eplscheck = this.transform.parent.GetComponent<PlayerController>().eplscheck;
 		EnergyControll();
 	}
 
@@ -62,51 +66,29 @@ public class hide_unhide : MonoBehaviour
 		energyBar.value = currentEnergy;
 		
 		if(useLight)
+		{
+			
+			if (Input.GetKey (onKey))
 			{
 				
-				if (Input.GetKey (onKey))
-					{
-					
-							
-								this.renderer.enabled = true;
-								falshlightCheck = true;
-								currentEnergy -= reachargerate * Time.deltaTime;
-								
-
-
-
-
-
-
+				Check = true;
+				this.renderer.enabled = true;
+				falshlightCheck = true;
+				currentEnergy -= reachargerate * Time.deltaTime;
+				
 				ColourChanging();
-
-
-
-					}
-				else
-					{
-						this.renderer.enabled = false;
-						falshlightCheck = false;
-						Reacharge();
-						LostTime = 0;
-				//LostTime = maxEnergy - currentEnergy;
-				//Debug.Log ("LostTime1:" + LostTime);
-
-
-
-
-
-
-				//this.gameObject.renderer.material.color = ColorThree;
-					
-			
-			
-
-
-			
+				
 			}
+			else
+			{
+				Check = false;
+				this.renderer.enabled = false;
+				falshlightCheck = false;
+				Reacharge();
+				LostTime = 0;
 			}
-		
+		}
+
 		if(currentEnergy >= maxEnergy)
 			{
 				currentEnergy = maxEnergy; 

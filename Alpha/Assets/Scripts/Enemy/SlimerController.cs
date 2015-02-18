@@ -39,11 +39,11 @@ public class SlimerController : MonoBehaviour
 	public GameObject shot;
 	public Transform shotSpawn;
 	public float Timer;
-	public float DoubleshotCooldown = 1.5f; //***
+	public float DoubleshotCooldown = 1f; //***
 	private float DoubleshotCooldownTimer = 0; //***
 	public float ResetTimer;
-	private float progressA = 0;
-	private float progressN = 0;
+	//private float progressA = 0;
+	//private float progressN = 0;
 
 	void Start () 
 	{
@@ -161,14 +161,15 @@ public class SlimerController : MonoBehaviour
 
 						float timeSinceLastShot = ResetTimer - Timer; //***
 						if ((DoubleshotCooldownTimer <= 0) 
-				    		&& (timeSinceLastShot > 1.0f)) //***
+				    		&& (timeSinceLastShot > 0.5f)) //***
 						{ //***
+
 							StartCoroutine("DoubleShot");
 							Timer = ResetTimer;
 							DoubleshotCooldownTimer = DoubleshotCooldown; //***
 						} //***
 
-							StartCoroutine("ColorChangingNormal");
+							
 						// is Health lower than 0
 
 							if (Health < 0)	
@@ -198,19 +199,26 @@ public class SlimerController : MonoBehaviour
 				Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 				yield return new WaitForSeconds (0.5f);
 					
-					if (myShape.enabled == true)
+
+
+			if (myShape.enabled == true)
 						{
 							
-							
-							Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
+							Instantiate (shot, shotSpawn.position, shotSpawn.rotation);		
+							Speed = Speed - AngrySpeed;
+							ActivateParticle();
+							StartCoroutine ("ColourChangingNormal");
+							Debug.Log("NORMAL");
+							//Instantiate (shot, shotSpawn.position, shotSpawn.rotation);
 						}
 
 					
 						
-					if (myShape.enabled == true)
+				/*	if (myShape.enabled == true)
 						{
 							Speed = Speed - AngrySpeed;
 							ActivateParticle();
+							StartCoroutine ("ColourChangingNormal");
 						}
 
 					yield return new WaitForSeconds (0.5f);
@@ -247,8 +255,9 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator ColourChangingAngry()
 	{
-		//float progress = 0;
+		float progressA = 0;
 		float increment = smoothness/duration;
+		Debug.Log ("AngryProgress:" + progressA);
 
 		while(progressA < 1)
 			{
@@ -262,7 +271,10 @@ public class SlimerController : MonoBehaviour
 
 	IEnumerator ColourChangingNormal()
 	{
-		//float progress = 0;
+
+		float progressN = 0;
+		Debug.Log ("NormalProgress:" + progressN);
+		//Debug.Log ("NORMAL");
 		float increment = smoothness/duration;
 
 		while(progressN < 1)

@@ -73,9 +73,9 @@ public class inGamePause : MonoBehaviour
 									
 							
 								
-						//	PlayerPrefs.GetInt ("AudioToggle");	
+						
 					audioSource.Pause();
-					Debug.Log("NA");
+
 						}
 				}
 		yield return null;

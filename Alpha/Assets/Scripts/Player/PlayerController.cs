@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
 	public Image yellowFace;
 	public Image greenFace;
 
+	public bool eplscheck;
+	public bool Check;
+
 	//Sound
 	public AudioClip[] hitSounds;
 	//public AudioClip hitSound02;
@@ -51,16 +54,26 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
 	{
-		// wenn rechtemaustaste gedrückt wird, wird ein Schuss am Player gespawnt 
-		if (Input.GetButton("Fire1") && Time.time > nextFire)
-		{
-			nextFire = Time.time + fireRate;
-			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-		} 
+		Check = this.transform.GetComponentInChildren<hide_unhide>().Check;
+		
+		PlayerFire();
 
 	}
 
-	
+	void PlayerFire()
+	{
+		// wenn rechtemaustaste gedrückt wird, wird ein Schuss am Player gespawnt 
+		if (Input.GetButton("Fire1") && Time.time > nextFire && !Check)
+		{
+			eplscheck = true;
+			nextFire = Time.time + fireRate;
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
+		else
+		{
+			eplscheck = false;
+		}
+	}
 	void FixedUpdate ()
 	{
 		UIHealth();
