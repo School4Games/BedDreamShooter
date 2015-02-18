@@ -13,7 +13,6 @@ public class inGamePause : MonoBehaviour
 	public void Start () 
 	{
 		StartCoroutine (PauseCoroutine());
-
 	}
 	
 	// Update is called once per frame
@@ -38,44 +37,34 @@ public class inGamePause : MonoBehaviour
 		{
 			if (Input.GetKeyDown (KeyCode.P) || breaker)
 				{
-
-				AudioSource audioSource = SoundOption.GetComponent<AudioSource>();
+					//this.GameObject.SetActive(false);
 					
+					//SoundOption.gameObject.GetComponent<AudioToggle>().MenuOn = false; 
+
 				PlayerPrefs.GetInt ("AudioToggle");	
-
-				pause.SetActive(true);
+				AudioListener.pause = false;
 					
-
-
-
-
+					pause.SetActive(true);
+					
 					breaker = false;
 
 					if (Time.timeScale == 0)
 						{
 							Time.timeScale = 1;
 
-					if (PlayerPrefs.GetInt ("AudioToggle") > 0)
-					{
-							audioSource.Play();
-
-					}
 							pause.SetActive(false);
-							
-					
+							//playButton.SetActive(false);
 						}
 					else
 					//if (reStart.)
 						{
 							
-								
+							//PlayerPrefs.SetInt ("AudioToggle", 0);		
 							Time.timeScale = 0;
-									
-							
-								
-						//	PlayerPrefs.GetInt ("AudioToggle");	
-					audioSource.Pause();
-					Debug.Log("NA");
+							//SoundOption.gameObject.GetComponent<AudioToggle>().MenuOn = true; 
+							//this.GameObject.SetActive(true);
+							AudioListener.pause = true;
+							PlayerPrefs.GetInt ("AudioToggle");	
 						}
 				}
 		yield return null;
@@ -101,12 +90,5 @@ public class inGamePause : MonoBehaviour
 
 	}
 
-
-	public void SoundTest()
-
-	{
-		AudioSource audioSource = SoundOption.GetComponent<AudioSource>();
-		audioSource.Play();
-	}
 
 }
