@@ -21,6 +21,7 @@ public class SlimerController : MonoBehaviour
 	public string Tag; 
 	public float Health = 2;
 	public int scoreValue = 10;
+	public int killScoreValue;
 
 
 	//Vars from SlimerShot Script
@@ -100,7 +101,10 @@ public class SlimerController : MonoBehaviour
 			
 		if (other.gameObject.tag == "Player")
 			{
-				Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
+				//wenn der player dieses GameObject zerstört durch reinfliegen, gibt es im score trostpunkte
+				ScoreManager.score += killScoreValue;
+				//gameObject an welchem das script dranhängt (pillow)
+				Destroy (this.gameObject); 
 			}
 	}
 	
