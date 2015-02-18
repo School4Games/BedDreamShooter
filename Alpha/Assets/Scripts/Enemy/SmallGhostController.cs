@@ -11,7 +11,6 @@ public class SmallGhostController : MonoBehaviour
 	private bool Timercheck;
 	public GameObject SoundObject;
 	public int scoreValue;
-	public int killScoreValue;
 
 	//Partikeleffekt
 	public GameObject BurnPart;
@@ -96,7 +95,7 @@ public class SmallGhostController : MonoBehaviour
 				CottonPart.particleSystem.enableEmission = false;
 				//Geist zerstören, nach Zeit, damit die Partikeleffekte noch zu Ende gehen
 				//Zeit entspricht etwas mehr als der Lebensdauer der Partikel
-				Destroy (this.gameObject, 2.0f);
+				Destroy (this.gameObject, 2f);
 
 			}
 	}
@@ -129,7 +128,6 @@ public class SmallGhostController : MonoBehaviour
 				
 				if (other.gameObject.tag == "Player") 
 					{
-						ScoreManager.score += killScoreValue;
 						Destroy (this.gameObject); // gameObject an welchem das script dranhängt (pillow)
 						Instantiate (SoundObject, transform.position, transform.rotation);
 					}
